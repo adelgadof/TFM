@@ -1,0 +1,132 @@
+Server.py:8: ParserWarning: Falling back to the 'python' engine because the 'c' engine does not support regex separators (separators > 1 char and different from '\s+' are interpreted as regex); you can avoid this warning by specifying engine='python'.
+  pddopen5 = pd.read_csv('OPEN/txt/5x5/5x5pdd.txt', delimiter='		', names=['r', 'señal open 5x5', 'error open 5x5'])
+Server.py:9: ParserWarning: Falling back to the 'python' engine because the 'c' engine does not support regex separators (separators > 1 char and different from '\s+' are interpreted as regex); you can avoid this warning by specifying engine='python'.
+  pcropen5 = pd.read_csv('OPEN/txt/5x5/5x5pro-cr-100.txt', delimiter='		', names=['r', 'señal open 5x5', 'error open 5x5'])
+Server.py:10: ParserWarning: Falling back to the 'python' engine because the 'c' engine does not support regex separators (separators > 1 char and different from '\s+' are interpreted as regex); you can avoid this warning by specifying engine='python'.
+  pinopen5 = pd.read_csv('OPEN/txt/5x5/5x5pro-in-100.txt', delimiter='		', names=['r', 'señal open 5x5', 'error open 5x5'])
+Server.py:12: ParserWarning: Falling back to the 'python' engine because the 'c' engine does not support regex separators (separators > 1 char and different from '\s+' are interpreted as regex); you can avoid this warning by specifying engine='python'.
+  pddFFF5 = pd.read_csv('FFF/txt/5x5/5x5pdd.txt', delimiter='		', names=['r', 'señal fff 5x5', 'error fff 5x5'])
+Server.py:13: ParserWarning: Falling back to the 'python' engine because the 'c' engine does not support regex separators (separators > 1 char and different from '\s+' are interpreted as regex); you can avoid this warning by specifying engine='python'.
+  pcrFFF5 = pd.read_csv('FFF/txt/5x5/5x5pro-cr-100.txt', delimiter='		', names=['r', 'señal fff 5x5', 'error fff 5x5'])
+Server.py:14: ParserWarning: Falling back to the 'python' engine because the 'c' engine does not support regex separators (separators > 1 char and different from '\s+' are interpreted as regex); you can avoid this warning by specifying engine='python'.
+  pinFFF5 = pd.read_csv('FFF/txt/5x5/5x5pro-in-100.txt', delimiter='		', names=['r', 'señal fff 5x5', 'error fff 5x5'])
+Server.py:19: ParserWarning: Falling back to the 'python' engine because the 'c' engine does not support regex separators (separators > 1 char and different from '\s+' are interpreted as regex); you can avoid this warning by specifying engine='python'.
+  pddopen10 = pd.read_csv('OPEN/txt/10x10/10x10pdd.txt', delimiter='		', names=['r', 'señal open 10x10', 'error open 10x10'])
+Server.py:20: ParserWarning: Falling back to the 'python' engine because the 'c' engine does not support regex separators (separators > 1 char and different from '\s+' are interpreted as regex); you can avoid this warning by specifying engine='python'.
+  pcropen10 = pd.read_csv('OPEN/txt/10x10/10x10pro-cr-100.txt', delimiter='		', names=['r', 'señal open 10x10', 'error open 10x10'])
+Server.py:21: ParserWarning: Falling back to the 'python' engine because the 'c' engine does not support regex separators (separators > 1 char and different from '\s+' are interpreted as regex); you can avoid this warning by specifying engine='python'.
+  pinopen10 = pd.read_csv('OPEN/txt/10x10/10x10pro-in-100.txt', delimiter='		', names=['r', 'señal open 10x10', 'error open 10x10'])
+Server.py:23: ParserWarning: Falling back to the 'python' engine because the 'c' engine does not support regex separators (separators > 1 char and different from '\s+' are interpreted as regex); you can avoid this warning by specifying engine='python'.
+  pddFFF10 = pd.read_csv('FFF/txt/10x10/10x10pdd.txt', delimiter='		', names=['r', 'señal fff 10x10', 'error fff 10x10'])
+Server.py:24: ParserWarning: Falling back to the 'python' engine because the 'c' engine does not support regex separators (separators > 1 char and different from '\s+' are interpreted as regex); you can avoid this warning by specifying engine='python'.
+  pcrFFF10 = pd.read_csv('FFF/txt/10x10/10x10pro-cr-100.txt', delimiter='		', names=['r', 'señal fff 10x10', 'error fff 10x10'])
+Server.py:25: ParserWarning: Falling back to the 'python' engine because the 'c' engine does not support regex separators (separators > 1 char and different from '\s+' are interpreted as regex); you can avoid this warning by specifying engine='python'.
+  pinFFF10 = pd.read_csv('FFF/txt/10x10/10x10pro-in-100.txt', delimiter='		', names=['r', 'señal fff 10x10', 'error fff 10x10'])
+Server.py:30: ParserWarning: Falling back to the 'python' engine because the 'c' engine does not support regex separators (separators > 1 char and different from '\s+' are interpreted as regex); you can avoid this warning by specifying engine='python'.
+  pddopen20 = pd.read_csv('OPEN/txt/20x20/20x20pdd.txt', delimiter='		', names=['r', 'señal open 20x20', 'error open 20x20'])
+Server.py:31: ParserWarning: Falling back to the 'python' engine because the 'c' engine does not support regex separators (separators > 1 char and different from '\s+' are interpreted as regex); you can avoid this warning by specifying engine='python'.
+  pcropen20 = pd.read_csv('OPEN/txt/20x20/20x20pro-cr-100.txt', delimiter='		', names=['r', 'señal open 20x20', 'error open 20x20'])
+Server.py:32: ParserWarning: Falling back to the 'python' engine because the 'c' engine does not support regex separators (separators > 1 char and different from '\s+' are interpreted as regex); you can avoid this warning by specifying engine='python'.
+  pinopen20 = pd.read_csv('OPEN/txt/20x20/20x20pro-in-100.txt', delimiter='		', names=['r', 'señal open 20x20', 'error open 20x20'])
+Server.py:34: ParserWarning: Falling back to the 'python' engine because the 'c' engine does not support regex separators (separators > 1 char and different from '\s+' are interpreted as regex); you can avoid this warning by specifying engine='python'.
+  pddFFF20 = pd.read_csv('FFF/txt/20x20/20x20pdd.txt', delimiter='		', names=['r', 'señal fff 20x20', 'error fff 20x20'])
+Server.py:35: ParserWarning: Falling back to the 'python' engine because the 'c' engine does not support regex separators (separators > 1 char and different from '\s+' are interpreted as regex); you can avoid this warning by specifying engine='python'.
+  pcrFFF20 = pd.read_csv('FFF/txt/20x20/20x20pro-cr-100.txt', delimiter='		', names=['r', 'señal fff 20x20', 'error fff 20x20'])
+Server.py:36: ParserWarning: Falling back to the 'python' engine because the 'c' engine does not support regex separators (separators > 1 char and different from '\s+' are interpreted as regex); you can avoid this warning by specifying engine='python'.
+  pinFFF20 = pd.read_csv('FFF/txt/20x20/20x20pro-in-100.txt', delimiter='		', names=['r', 'señal fff 20x20', 'error fff 20x20'])
+Server.py:41: ParserWarning: Falling back to the 'python' engine because the 'c' engine does not support regex separators (separators > 1 char and different from '\s+' are interpreted as regex); you can avoid this warning by specifying engine='python'.
+  pddopen40 = pd.read_csv('OPEN/txt/40x40/40x40pdd.txt', delimiter='		', names=['r', 'señal open 40x40', 'error open 40x40'])
+Server.py:42: ParserWarning: Falling back to the 'python' engine because the 'c' engine does not support regex separators (separators > 1 char and different from '\s+' are interpreted as regex); you can avoid this warning by specifying engine='python'.
+  pcropen40 = pd.read_csv('OPEN/txt/40x40/40x40pro-cr-100.txt', delimiter='		', names=['r', 'señal open 40x40', 'error open 40x40'])
+Server.py:43: ParserWarning: Falling back to the 'python' engine because the 'c' engine does not support regex separators (separators > 1 char and different from '\s+' are interpreted as regex); you can avoid this warning by specifying engine='python'.
+  pinopen40 = pd.read_csv('OPEN/txt/40x40/40x40pro-in-100.txt', delimiter='		', names=['r', 'señal open 40x40', 'error open 40x40'])
+Server.py:45: ParserWarning: Falling back to the 'python' engine because the 'c' engine does not support regex separators (separators > 1 char and different from '\s+' are interpreted as regex); you can avoid this warning by specifying engine='python'.
+  pddFFF40 = pd.read_csv('FFF/txt/40x40/40x40pdd.txt', delimiter='		', names=['r', 'señal fff 40x40', 'error fff 40x40'])
+Server.py:46: ParserWarning: Falling back to the 'python' engine because the 'c' engine does not support regex separators (separators > 1 char and different from '\s+' are interpreted as regex); you can avoid this warning by specifying engine='python'.
+  pcrFFF40 = pd.read_csv('FFF/txt/40x40/40x40pro-cr-100.txt', delimiter='		', names=['r', 'señal fff 40x40', 'error fff 40x40'])
+Server.py:47: ParserWarning: Falling back to the 'python' engine because the 'c' engine does not support regex separators (separators > 1 char and different from '\s+' are interpreted as regex); you can avoid this warning by specifying engine='python'.
+  pinFFF40 = pd.read_csv('FFF/txt/40x40/40x40pro-in-100.txt', delimiter='		', names=['r', 'señal fff 40x40', 'error fff 40x40'])
+Server.py:54: ParserWarning: Falling back to the 'python' engine because the 'c' engine does not support regex separators (separators > 1 char and different from '\s+' are interpreted as regex); you can avoid this warning by specifying engine='python'.
+  pddopen5_115 = pd.read_csv('OPEN/txt/5x5/5x5pdd.txt', delimiter='		', names=['r', 'señal open 5x5', 'error open 5x5'])
+Server.py:55: ParserWarning: Falling back to the 'python' engine because the 'c' engine does not support regex separators (separators > 1 char and different from '\s+' are interpreted as regex); you can avoid this warning by specifying engine='python'.
+  pcropen5_115 = pd.read_csv('OPEN/txt/5x5/5x5pro-cr-115.txt', delimiter='		', names=['r', 'señal open 5x5', 'error open 5x5'])
+Server.py:56: ParserWarning: Falling back to the 'python' engine because the 'c' engine does not support regex separators (separators > 1 char and different from '\s+' are interpreted as regex); you can avoid this warning by specifying engine='python'.
+  pinopen5_115 = pd.read_csv('OPEN/txt/5x5/5x5pro-in-115.txt', delimiter='		', names=['r', 'señal open 5x5', 'error open 5x5'])
+Server.py:58: ParserWarning: Falling back to the 'python' engine because the 'c' engine does not support regex separators (separators > 1 char and different from '\s+' are interpreted as regex); you can avoid this warning by specifying engine='python'.
+  pddFFF5_115 = pd.read_csv('FFF/txt/5x5/5x5pdd.txt', delimiter='		', names=['r', 'señal fff 5x5', 'error fff 5x5'])
+Server.py:59: ParserWarning: Falling back to the 'python' engine because the 'c' engine does not support regex separators (separators > 1 char and different from '\s+' are interpreted as regex); you can avoid this warning by specifying engine='python'.
+  pcrFFF5_115 = pd.read_csv('FFF/txt/5x5/5x5pro-cr-115.txt', delimiter='		', names=['r', 'señal fff 5x5', 'error fff 5x5'])
+Server.py:60: ParserWarning: Falling back to the 'python' engine because the 'c' engine does not support regex separators (separators > 1 char and different from '\s+' are interpreted as regex); you can avoid this warning by specifying engine='python'.
+  pinFFF5_115 = pd.read_csv('FFF/txt/5x5/5x5pro-in-115.txt', delimiter='		', names=['r', 'señal fff 5x5', 'error fff 5x5'])
+Server.py:65: ParserWarning: Falling back to the 'python' engine because the 'c' engine does not support regex separators (separators > 1 char and different from '\s+' are interpreted as regex); you can avoid this warning by specifying engine='python'.
+  pddopen10_115 = pd.read_csv('OPEN/txt/10x10/10x10pdd.txt', delimiter='		', names=['r', 'señal open 10x10', 'error open 10x10'])
+Server.py:66: ParserWarning: Falling back to the 'python' engine because the 'c' engine does not support regex separators (separators > 1 char and different from '\s+' are interpreted as regex); you can avoid this warning by specifying engine='python'.
+  pcropen10_115 = pd.read_csv('OPEN/txt/10x10/10x10pro-cr-115.txt', delimiter='		', names=['r', 'señal open 10x10', 'error open 10x10'])
+Server.py:67: ParserWarning: Falling back to the 'python' engine because the 'c' engine does not support regex separators (separators > 1 char and different from '\s+' are interpreted as regex); you can avoid this warning by specifying engine='python'.
+  pinopen10_115 = pd.read_csv('OPEN/txt/10x10/10x10pro-in-115.txt', delimiter='		', names=['r', 'señal open 10x10', 'error open 10x10'])
+Server.py:69: ParserWarning: Falling back to the 'python' engine because the 'c' engine does not support regex separators (separators > 1 char and different from '\s+' are interpreted as regex); you can avoid this warning by specifying engine='python'.
+  pddFFF10_115 = pd.read_csv('FFF/txt/10x10/10x10pdd.txt', delimiter='		', names=['r', 'señal fff 10x10', 'error fff 10x10'])
+Server.py:70: ParserWarning: Falling back to the 'python' engine because the 'c' engine does not support regex separators (separators > 1 char and different from '\s+' are interpreted as regex); you can avoid this warning by specifying engine='python'.
+  pcrFFF10_115 = pd.read_csv('FFF/txt/10x10/10x10pro-cr-115.txt', delimiter='		', names=['r', 'señal fff 10x10', 'error fff 10x10'])
+Server.py:71: ParserWarning: Falling back to the 'python' engine because the 'c' engine does not support regex separators (separators > 1 char and different from '\s+' are interpreted as regex); you can avoid this warning by specifying engine='python'.
+  pinFFF10_115 = pd.read_csv('FFF/txt/10x10/10x10pro-in-115.txt', delimiter='		', names=['r', 'señal fff 10x10', 'error fff 10x10'])
+Server.py:76: ParserWarning: Falling back to the 'python' engine because the 'c' engine does not support regex separators (separators > 1 char and different from '\s+' are interpreted as regex); you can avoid this warning by specifying engine='python'.
+  pddopen20_115 = pd.read_csv('OPEN/txt/20x20/20x20pdd.txt', delimiter='		', names=['r', 'señal open 20x20', 'error open 20x20'])
+Server.py:77: ParserWarning: Falling back to the 'python' engine because the 'c' engine does not support regex separators (separators > 1 char and different from '\s+' are interpreted as regex); you can avoid this warning by specifying engine='python'.
+  pcropen20_115 = pd.read_csv('OPEN/txt/20x20/20x20pro-cr-115.txt', delimiter='		', names=['r', 'señal open 20x20', 'error open 20x20'])
+Server.py:78: ParserWarning: Falling back to the 'python' engine because the 'c' engine does not support regex separators (separators > 1 char and different from '\s+' are interpreted as regex); you can avoid this warning by specifying engine='python'.
+  pinopen20_115 = pd.read_csv('OPEN/txt/20x20/20x20pro-in-115.txt', delimiter='		', names=['r', 'señal open 20x20', 'error open 20x20'])
+Server.py:80: ParserWarning: Falling back to the 'python' engine because the 'c' engine does not support regex separators (separators > 1 char and different from '\s+' are interpreted as regex); you can avoid this warning by specifying engine='python'.
+  pddFFF20_115 = pd.read_csv('FFF/txt/20x20/20x20pdd.txt', delimiter='		', names=['r', 'señal fff 20x20', 'error fff 20x20'])
+Server.py:81: ParserWarning: Falling back to the 'python' engine because the 'c' engine does not support regex separators (separators > 1 char and different from '\s+' are interpreted as regex); you can avoid this warning by specifying engine='python'.
+  pcrFFF20_115 = pd.read_csv('FFF/txt/20x20/20x20pro-cr-115.txt', delimiter='		', names=['r', 'señal fff 20x20', 'error fff 20x20'])
+Server.py:82: ParserWarning: Falling back to the 'python' engine because the 'c' engine does not support regex separators (separators > 1 char and different from '\s+' are interpreted as regex); you can avoid this warning by specifying engine='python'.
+  pinFFF20_115 = pd.read_csv('FFF/txt/20x20/20x20pro-in-115.txt', delimiter='		', names=['r', 'señal fff 20x20', 'error fff 20x20'])
+Server.py:87: ParserWarning: Falling back to the 'python' engine because the 'c' engine does not support regex separators (separators > 1 char and different from '\s+' are interpreted as regex); you can avoid this warning by specifying engine='python'.
+  pddopen40_115 = pd.read_csv('OPEN/txt/40x40/40x40pdd.txt', delimiter='		', names=['r', 'señal open 40x40', 'error open 40x40'])
+Server.py:88: ParserWarning: Falling back to the 'python' engine because the 'c' engine does not support regex separators (separators > 1 char and different from '\s+' are interpreted as regex); you can avoid this warning by specifying engine='python'.
+  pcropen40_115 = pd.read_csv('OPEN/txt/40x40/40x40pro-cr-115.txt', delimiter='		', names=['r', 'señal open 40x40', 'error open 40x40'])
+Server.py:89: ParserWarning: Falling back to the 'python' engine because the 'c' engine does not support regex separators (separators > 1 char and different from '\s+' are interpreted as regex); you can avoid this warning by specifying engine='python'.
+  pinopen40_115 = pd.read_csv('OPEN/txt/40x40/40x40pro-in-115.txt', delimiter='		', names=['r', 'señal open 40x40', 'error open 40x40'])
+Server.py:91: ParserWarning: Falling back to the 'python' engine because the 'c' engine does not support regex separators (separators > 1 char and different from '\s+' are interpreted as regex); you can avoid this warning by specifying engine='python'.
+  pddFFF40_115 = pd.read_csv('FFF/txt/40x40/40x40pdd.txt', delimiter='		', names=['r', 'señal fff 40x40', 'error fff 40x40'])
+Server.py:92: ParserWarning: Falling back to the 'python' engine because the 'c' engine does not support regex separators (separators > 1 char and different from '\s+' are interpreted as regex); you can avoid this warning by specifying engine='python'.
+  pcrFFF40_115 = pd.read_csv('FFF/txt/40x40/40x40pro-cr-115.txt', delimiter='		', names=['r', 'señal fff 40x40', 'error fff 40x40'])
+Server.py:93: ParserWarning: Falling back to the 'python' engine because the 'c' engine does not support regex separators (separators > 1 char and different from '\s+' are interpreted as regex); you can avoid this warning by specifying engine='python'.
+  pinFFF40_115 = pd.read_csv('FFF/txt/40x40/40x40pro-in-115.txt', delimiter='		', names=['r', 'señal fff 40x40', 'error fff 40x40'])
+Server.py:100: ParserWarning: Falling back to the 'python' engine because the 'c' engine does not support regex separators (separators > 1 char and different from '\s+' are interpreted as regex); you can avoid this warning by specifying engine='python'.
+  pddopen5_85 = pd.read_csv('OPEN/txt/5x5/5x5pdd.txt', delimiter='		', names=['r', 'señal open 5x5', 'error open 5x5'])
+Server.py:101: ParserWarning: Falling back to the 'python' engine because the 'c' engine does not support regex separators (separators > 1 char and different from '\s+' are interpreted as regex); you can avoid this warning by specifying engine='python'.
+  pcropen5_85 = pd.read_csv('OPEN/txt/5x5/5x5pro-cr-85.txt', delimiter='		', names=['r', 'señal open 5x5', 'error open 5x5'])
+Server.py:102: ParserWarning: Falling back to the 'python' engine because the 'c' engine does not support regex separators (separators > 1 char and different from '\s+' are interpreted as regex); you can avoid this warning by specifying engine='python'.
+  pinopen5_85 = pd.read_csv('OPEN/txt/5x5/5x5pro-in-85.txt', delimiter='		', names=['r', 'señal open 5x5', 'error open 5x5'])
+Server.py:104: ParserWarning: Falling back to the 'python' engine because the 'c' engine does not support regex separators (separators > 1 char and different from '\s+' are interpreted as regex); you can avoid this warning by specifying engine='python'.
+  pddFFF5_85 = pd.read_csv('FFF/txt/5x5/5x5pdd.txt', delimiter='		', names=['r', 'señal fff 5x5', 'error fff 5x5'])
+Server.py:105: ParserWarning: Falling back to the 'python' engine because the 'c' engine does not support regex separators (separators > 1 char and different from '\s+' are interpreted as regex); you can avoid this warning by specifying engine='python'.
+  pcrFFF5_85 = pd.read_csv('FFF/txt/5x5/5x5pro-cr-85.txt', delimiter='		', names=['r', 'señal fff 5x5', 'error fff 5x5'])
+Server.py:106: ParserWarning: Falling back to the 'python' engine because the 'c' engine does not support regex separators (separators > 1 char and different from '\s+' are interpreted as regex); you can avoid this warning by specifying engine='python'.
+  pinFFF5_85 = pd.read_csv('FFF/txt/5x5/5x5pro-in-85.txt', delimiter='		', names=['r', 'señal fff 5x5', 'error fff 5x5'])
+Server.py:111: ParserWarning: Falling back to the 'python' engine because the 'c' engine does not support regex separators (separators > 1 char and different from '\s+' are interpreted as regex); you can avoid this warning by specifying engine='python'.
+  pddopen10_85 = pd.read_csv('OPEN/txt/10x10/10x10pdd.txt', delimiter='		', names=['r', 'señal open 10x10', 'error open 10x10'])
+Server.py:112: ParserWarning: Falling back to the 'python' engine because the 'c' engine does not support regex separators (separators > 1 char and different from '\s+' are interpreted as regex); you can avoid this warning by specifying engine='python'.
+  pcropen10_85 = pd.read_csv('OPEN/txt/10x10/10x10pro-cr-85.txt', delimiter='		', names=['r', 'señal open 10x10', 'error open 10x10'])
+Server.py:113: ParserWarning: Falling back to the 'python' engine because the 'c' engine does not support regex separators (separators > 1 char and different from '\s+' are interpreted as regex); you can avoid this warning by specifying engine='python'.
+  pinopen10_85 = pd.read_csv('OPEN/txt/10x10/10x10pro-in-85.txt', delimiter='		', names=['r', 'señal open 10x10', 'error open 10x10'])
+Server.py:115: ParserWarning: Falling back to the 'python' engine because the 'c' engine does not support regex separators (separators > 1 char and different from '\s+' are interpreted as regex); you can avoid this warning by specifying engine='python'.
+  pddFFF10_85 = pd.read_csv('FFF/txt/10x10/10x10pdd.txt', delimiter='		', names=['r', 'señal fff 10x10', 'error fff 10x10'])
+Server.py:116: ParserWarning: Falling back to the 'python' engine because the 'c' engine does not support regex separators (separators > 1 char and different from '\s+' are interpreted as regex); you can avoid this warning by specifying engine='python'.
+  pcrFFF10_85 = pd.read_csv('FFF/txt/10x10/10x10pro-cr-85.txt', delimiter='		', names=['r', 'señal fff 10x10', 'error fff 10x10'])
+Server.py:117: ParserWarning: Falling back to the 'python' engine because the 'c' engine does not support regex separators (separators > 1 char and different from '\s+' are interpreted as regex); you can avoid this warning by specifying engine='python'.
+  pinFFF10_85 = pd.read_csv('FFF/txt/10x10/10x10pro-in-85.txt', delimiter='		', names=['r', 'señal fff 10x10', 'error fff 10x10'])
+Server.py:122: ParserWarning: Falling back to the 'python' engine because the 'c' engine does not support regex separators (separators > 1 char and different from '\s+' are interpreted as regex); you can avoid this warning by specifying engine='python'.
+  pddopen20_85 = pd.read_csv('OPEN/txt/20x20/20x20pdd.txt', delimiter='		', names=['r', 'señal open 20x20', 'error open 20x20'])
+Server.py:123: ParserWarning: Falling back to the 'python' engine because the 'c' engine does not support regex separators (separators > 1 char and different from '\s+' are interpreted as regex); you can avoid this warning by specifying engine='python'.
+  pcropen20_85 = pd.read_csv('OPEN/txt/20x20/20x20pro-cr-85.txt', delimiter='		', names=['r', 'señal open 20x20', 'error open 20x20'])
+Server.py:124: ParserWarning: Falling back to the 'python' engine because the 'c' engine does not support regex separators (separators > 1 char and different from '\s+' are interpreted as regex); you can avoid this warning by specifying engine='python'.
+  pinopen20_85 = pd.read_csv('OPEN/txt/20x20/20x20pro-in-85.txt', delimiter='		', names=['r', 'señal open 20x20', 'error open 20x20'])
+Server.py:126: ParserWarning: Falling back to the 'python' engine because the 'c' engine does not support regex separators (separators > 1 char and different from '\s+' are interpreted as regex); you can avoid this warning by specifying engine='python'.
+  pddFFF20_85 = pd.read_csv('FFF/txt/20x20/20x20pdd.txt', delimiter='		', names=['r', 'señal fff 20x20', 'error fff 20x20'])
+Server.py:127: ParserWarning: Falling back to the 'python' engine because the 'c' engine does not support regex separators (separators > 1 char and different from '\s+' are interpreted as regex); you can avoid this warning by specifying engine='python'.
+  pcrFFF20_85 = pd.read_csv('FFF/txt/20x20/20x20pro-cr-85.txt', delimiter='		', names=['r', 'señal fff 20x20', 'error fff 20x20'])
+Server.py:128: ParserWarning: Falling back to the 'python' engine because the 'c' engine does not support regex separators (separators > 1 char and different from '\s+' are interpreted as regex); you can avoid this warning by specifying engine='python'.
+  pinFFF20_85 = pd.read_csv('FFF/txt/20x20/20x20pro-in-85.txt', delimiter='		', names=['r', 'señal fff 20x20', 'error fff 20x20'])

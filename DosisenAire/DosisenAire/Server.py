@@ -1,6 +1,5 @@
 import pandas as pd 
 import numpy as np 
-pd.options.plotting.backend = 'plotly'
 
 # Cuadrados 100
 
@@ -139,6 +138,8 @@ pddFFF40_85 = pd.read_csv('FFF/txt/40x40/40x40pdd.txt', delimiter='		', names=['
 pcrFFF40_85 = pd.read_csv('FFF/txt/40x40/40x40pro-cr-85.txt', delimiter='		', names=['r', 'señal fff 40x40', 'error fff 40x40'])
 pinFFF40_85 = pd.read_csv('FFF/txt/40x40/40x40pro-in-85.txt', delimiter='		', names=['r', 'señal fff 40x40', 'error fff 40x40'])
 
+
+print('Imported Data')
 
 # Merge Data
 
@@ -466,14 +467,15 @@ Mixed['r'] = np.abs(Mixed.loc[:,['r']])
 
 Mixed = Mixed.loc[:,['r', 'señal', 'FFF', 'Area', 'In', 'Z']]
 
-
+Mixed.to_csv('Mixed.csv')
+print('Mixed to csv')
 
 
 MixedF0 = Mixed[Mixed['FFF']==0].reset_index(drop=True)
 MixedF00 = MixedF0[MixedF0['señal']>0.5]
 MixedF00.reset_index(drop=True, inplace=True)
 
-
+print('Concatenated data')
 
 ## Defining T plus and T minus
 
@@ -620,7 +622,7 @@ ScoresRF = []
 for i in np.arange(8, NormX.shape[1]):
 
     x = NormX.iloc[:,[0, 1, 2, 3, 4, 5, 6, 7, i]]
-    print(i)
+
 
     x_train, x_test, y_train, y_test = train_test_split(x, y)
 
@@ -683,7 +685,7 @@ for k in np.linspace(100, 200, 12):
                 for ñ in np.linspace(800000, 300000, 12):
         
         
-                    SecondNormX['analytic ' + str(k)+' ' + str(l)+' ' + str(m)+' ' + str(n)+' ' + str(ñ)] = (SecondNormX.iloc[:,[7]]*(1+SecondNormX['Rho'].to_numpy()**2)*(k*SecondNormX['Rho'].to_numpy()+l*SecondNormX['Rho'].to_numpy()+m*SecondNormX['Rho'].to_numpy()+n*SecondNormX['Rho'].to_numpy()+ñ*SecondNormX['Rho'].to_numpy()))
+                    SecondNormX['analytic ' + str(k)+' ' + str(l)+' ' + str(m)+' ' + str(n)+' ' + str(ñ)] = (SecondNormX.iloc[:,[7]]*(1+SecondNormX[['Rho']].to_numpy()**2)*(k*SecondNormX[['Rho']].to_numpy()+l*SecondNormX[['Rho']].to_numpy()+m*SecondNormX[['Rho']].to_numpy()+n*SecondNormX[['Rho']].to_numpy()+ñ*SecondNormX[['Rho']].to_numpy()))
 
                         
           
