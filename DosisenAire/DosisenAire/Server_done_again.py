@@ -649,7 +649,7 @@ for i in np.arange(10, MixedNoFFF.shape[1]):
                      
     x_train, x_test, y_train, y_test = train_test_split(RFx, y)
     
-    RF.fit(x_train, y_train)
+    RF.fit(x_train, np.ravel(y_train))
     ScoresRF.append((mean_absolute_error(RF.predict(x_test), y_test)))
 
 ## Save best result and error associated
