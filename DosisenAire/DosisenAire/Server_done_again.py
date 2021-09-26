@@ -5,35 +5,35 @@ import numpy as np
 
 ## 5x5
 
-pddopen5 = pd.read_csv('OPEN/txt/5x5/5x5pdd.txt', delimiter='		', names=['r', 'señal open 5x5', 'error open 5x5'])
-pcropen5 = pd.read_csv('OPEN/txt/5x5/5x5pro-cr-100.txt', delimiter='		', names=['r', 'señal open 5x5', 'error open 5x5'])
-pinopen5 = pd.read_csv('OPEN/txt/5x5/5x5pro-in-100.txt', delimiter='		', names=['r', 'señal open 5x5', 'error open 5x5'])
+pddopen5 = pd.read_csv('OPEN/txt/5x5/5x5pdd.txt', delimiter='		', engine='python', names=['r', 'señal open 5x5', 'error open 5x5'])
+pcropen5 = pd.read_csv('OPEN/txt/5x5/5x5pro-cr-100.txt', delimiter='		', engine='python', names=['r', 'señal open 5x5', 'error open 5x5'])
+pinopen5 = pd.read_csv('OPEN/txt/5x5/5x5pro-in-100.txt', delimiter='		', engine='python', names=['r', 'señal open 5x5', 'error open 5x5'])
 
-pddFFF5 = pd.read_csv('FFF/txt/5x5/5x5pdd.txt', delimiter='		', names=['r', 'señal fff 5x5', 'error fff 5x5'])
-pcrFFF5 = pd.read_csv('FFF/txt/5x5/5x5pro-cr-100.txt', delimiter='		', names=['r', 'señal fff 5x5', 'error fff 5x5'])
-pinFFF5 = pd.read_csv('FFF/txt/5x5/5x5pro-in-100.txt', delimiter='		', names=['r', 'señal fff 5x5', 'error fff 5x5'])
+pddFFF5 = pd.read_csv('FFF/txt/5x5/5x5pdd.txt', delimiter='		', engine='python', names=['r', 'señal fff 5x5', 'error fff 5x5'])
+pcrFFF5 = pd.read_csv('FFF/txt/5x5/5x5pro-cr-100.txt', delimiter='		', engine='python', names=['r', 'señal fff 5x5', 'error fff 5x5'])
+pinFFF5 = pd.read_csv('FFF/txt/5x5/5x5pro-in-100.txt', delimiter='		', engine='python', names=['r', 'señal fff 5x5', 'error fff 5x5'])
 
 
 ## 10x10
 
-pddopen10 = pd.read_csv('OPEN/txt/10x10/10x10pdd.txt', delimiter='		', names=['r', 'señal open 10x10', 'error open 10x10'])
-pcropen10 = pd.read_csv('OPEN/txt/10x10/10x10pro-cr-100.txt', delimiter='		', names=['r', 'señal open 10x10', 'error open 10x10'])
-pinopen10 = pd.read_csv('OPEN/txt/10x10/10x10pro-in-100.txt', delimiter='		', names=['r', 'señal open 10x10', 'error open 10x10'])
+pddopen10 = pd.read_csv('OPEN/txt/10x10/10x10pdd.txt', delimiter='		', engine='python', names=['r', 'señal open 10x10', 'error open 10x10'])
+pcropen10 = pd.read_csv('OPEN/txt/10x10/10x10pro-cr-100.txt', delimiter='		', engine='python', names=['r', 'señal open 10x10', 'error open 10x10'])
+pinopen10 = pd.read_csv('OPEN/txt/10x10/10x10pro-in-100.txt', delimiter='		', engine='python', names=['r', 'señal open 10x10', 'error open 10x10'])
 
-pddFFF10 = pd.read_csv('FFF/txt/10x10/10x10pdd.txt', delimiter='		', names=['r', 'señal fff 10x10', 'error fff 10x10'])
-pcrFFF10 = pd.read_csv('FFF/txt/10x10/10x10pro-cr-100.txt', delimiter='		', names=['r', 'señal fff 10x10', 'error fff 10x10'])
-pinFFF10 = pd.read_csv('FFF/txt/10x10/10x10pro-in-100.txt', delimiter='		', names=['r', 'señal fff 10x10', 'error fff 10x10'])
+pddFFF10 = pd.read_csv('FFF/txt/10x10/10x10pdd.txt', delimiter='		', engine='python', names=['r', 'señal fff 10x10', 'error fff 10x10'])
+pcrFFF10 = pd.read_csv('FFF/txt/10x10/10x10pro-cr-100.txt', delimiter='		', engine='python', names=['r', 'señal fff 10x10', 'error fff 10x10'])
+pinFFF10 = pd.read_csv('FFF/txt/10x10/10x10pro-in-100.txt', delimiter='		', engine='python', names=['r', 'señal fff 10x10', 'error fff 10x10'])
 
 
 ## 20x20
 
-pddopen20 = pd.read_csv('OPEN/txt/20x20/20x20pdd.txt', delimiter='		', names=['r', 'señal open 20x20', 'error open 20x20'])
-pcropen20 = pd.read_csv('OPEN/txt/20x20/20x20pro-cr-100.txt', delimiter='		', names=['r', 'señal open 20x20', 'error open 20x20'])
-pinopen20 = pd.read_csv('OPEN/txt/20x20/20x20pro-in-100.txt', delimiter='		', names=['r', 'señal open 20x20', 'error open 20x20'])
+pddopen20 = pd.read_csv('OPEN/txt/20x20/20x20pdd.txt', delimiter='		', engine='python', names=['r', 'señal open 20x20', 'error open 20x20'])
+pcropen20 = pd.read_csv('OPEN/txt/20x20/20x20pro-cr-100.txt', delimiter='		', engine='python', names=['r', 'señal open 20x20', 'error open 20x20'])
+pinopen20 = pd.read_csv('OPEN/txt/20x20/20x20pro-in-100.txt', delimiter='		', engine='python', names=['r', 'señal open 20x20', 'error open 20x20'])
 
-pddFFF20 = pd.read_csv('FFF/txt/20x20/20x20pdd.txt', delimiter='		', names=['r', 'señal fff 20x20', 'error fff 20x20'])
-pcrFFF20 = pd.read_csv('FFF/txt/20x20/20x20pro-cr-100.txt', delimiter='		', names=['r', 'señal fff 20x20', 'error fff 20x20'])
-pinFFF20 = pd.read_csv('FFF/txt/20x20/20x20pro-in-100.txt', delimiter='		', names=['r', 'señal fff 20x20', 'error fff 20x20'])
+pddFFF20 = pd.read_csv('FFF/txt/20x20/20x20pdd.txt', delimiter='		', engine='python', names=['r', 'señal fff 20x20', 'error fff 20x20'])
+pcrFFF20 = pd.read_csv('FFF/txt/20x20/20x20pro-cr-100.txt', delimiter='		', engine='python', names=['r', 'señal fff 20x20', 'error fff 20x20'])
+pinFFF20 = pd.read_csv('FFF/txt/20x20/20x20pro-in-100.txt', delimiter='		', engine='python', names=['r', 'señal fff 20x20', 'error fff 20x20'])
 
 
 
@@ -43,105 +43,105 @@ pinFFF20 = pd.read_csv('FFF/txt/20x20/20x20pro-in-100.txt', delimiter='		', name
 
 ## 40x40
 
-pddopen40 = pd.read_csv('OPEN/txt/40x40/40x40pdd.txt', delimiter='		', names=['r', 'señal open 40x40', 'error open 40x40'])
-pcropen40 = pd.read_csv('OPEN/txt/40x40/40x40pro-cr-100.txt', delimiter='		', names=['r', 'señal open 40x40', 'error open 40x40'])
-pinopen40 = pd.read_csv('OPEN/txt/40x40/40x40pro-in-100.txt', delimiter='		', names=['r', 'señal open 40x40', 'error open 40x40'])
+pddopen40 = pd.read_csv('OPEN/txt/40x40/40x40pdd.txt', delimiter='		', engine='python', names=['r', 'señal open 40x40', 'error open 40x40'])
+pcropen40 = pd.read_csv('OPEN/txt/40x40/40x40pro-cr-100.txt', delimiter='		', engine='python', names=['r', 'señal open 40x40', 'error open 40x40'])
+pinopen40 = pd.read_csv('OPEN/txt/40x40/40x40pro-in-100.txt', delimiter='		', engine='python', names=['r', 'señal open 40x40', 'error open 40x40'])
 
-pddFFF40 = pd.read_csv('FFF/txt/40x40/40x40pdd.txt', delimiter='		', names=['r', 'señal fff 40x40', 'error fff 40x40'])
-pcrFFF40 = pd.read_csv('FFF/txt/40x40/40x40pro-cr-100.txt', delimiter='		', names=['r', 'señal fff 40x40', 'error fff 40x40'])
-pinFFF40 = pd.read_csv('FFF/txt/40x40/40x40pro-in-100.txt', delimiter='		', names=['r', 'señal fff 40x40', 'error fff 40x40'])
+pddFFF40 = pd.read_csv('FFF/txt/40x40/40x40pdd.txt', delimiter='		', engine='python', names=['r', 'señal fff 40x40', 'error fff 40x40'])
+pcrFFF40 = pd.read_csv('FFF/txt/40x40/40x40pro-cr-100.txt', delimiter='		', engine='python', names=['r', 'señal fff 40x40', 'error fff 40x40'])
+pinFFF40 = pd.read_csv('FFF/txt/40x40/40x40pro-in-100.txt', delimiter='		', engine='python', names=['r', 'señal fff 40x40', 'error fff 40x40'])
 
 
 # Cuadrados 115
 
 ## 5x5
 
-pddopen5_115 = pd.read_csv('OPEN/txt/5x5/5x5pdd.txt', delimiter='		', names=['r', 'señal open 5x5', 'error open 5x5'])
-pcropen5_115 = pd.read_csv('OPEN/txt/5x5/5x5pro-cr-115.txt', delimiter='		', names=['r', 'señal open 5x5', 'error open 5x5'])
-pinopen5_115 = pd.read_csv('OPEN/txt/5x5/5x5pro-in-115.txt', delimiter='		', names=['r', 'señal open 5x5', 'error open 5x5'])
+pddopen5_115 = pd.read_csv('OPEN/txt/5x5/5x5pdd.txt', delimiter='		', engine='python', names=['r', 'señal open 5x5', 'error open 5x5'])
+pcropen5_115 = pd.read_csv('OPEN/txt/5x5/5x5pro-cr-115.txt', delimiter='		', engine='python', names=['r', 'señal open 5x5', 'error open 5x5'])
+pinopen5_115 = pd.read_csv('OPEN/txt/5x5/5x5pro-in-115.txt', delimiter='		', engine='python', names=['r', 'señal open 5x5', 'error open 5x5'])
 
-pddFFF5_115 = pd.read_csv('FFF/txt/5x5/5x5pdd.txt', delimiter='		', names=['r', 'señal fff 5x5', 'error fff 5x5'])
-pcrFFF5_115 = pd.read_csv('FFF/txt/5x5/5x5pro-cr-115.txt', delimiter='		', names=['r', 'señal fff 5x5', 'error fff 5x5'])
-pinFFF5_115 = pd.read_csv('FFF/txt/5x5/5x5pro-in-115.txt', delimiter='		', names=['r', 'señal fff 5x5', 'error fff 5x5'])
+pddFFF5_115 = pd.read_csv('FFF/txt/5x5/5x5pdd.txt', delimiter='		', engine='python', names=['r', 'señal fff 5x5', 'error fff 5x5'])
+pcrFFF5_115 = pd.read_csv('FFF/txt/5x5/5x5pro-cr-115.txt', delimiter='		', engine='python', names=['r', 'señal fff 5x5', 'error fff 5x5'])
+pinFFF5_115 = pd.read_csv('FFF/txt/5x5/5x5pro-in-115.txt', delimiter='		', engine='python', names=['r', 'señal fff 5x5', 'error fff 5x5'])
 
 
 ## 10x10
 
-pddopen10_115 = pd.read_csv('OPEN/txt/10x10/10x10pdd.txt', delimiter='		', names=['r', 'señal open 10x10', 'error open 10x10'])
-pcropen10_115 = pd.read_csv('OPEN/txt/10x10/10x10pro-cr-115.txt', delimiter='		', names=['r', 'señal open 10x10', 'error open 10x10'])
-pinopen10_115 = pd.read_csv('OPEN/txt/10x10/10x10pro-in-115.txt', delimiter='		', names=['r', 'señal open 10x10', 'error open 10x10'])
+pddopen10_115 = pd.read_csv('OPEN/txt/10x10/10x10pdd.txt', delimiter='		', engine='python', names=['r', 'señal open 10x10', 'error open 10x10'])
+pcropen10_115 = pd.read_csv('OPEN/txt/10x10/10x10pro-cr-115.txt', delimiter='		', engine='python', names=['r', 'señal open 10x10', 'error open 10x10'])
+pinopen10_115 = pd.read_csv('OPEN/txt/10x10/10x10pro-in-115.txt', delimiter='		', engine='python', names=['r', 'señal open 10x10', 'error open 10x10'])
 
-pddFFF10_115 = pd.read_csv('FFF/txt/10x10/10x10pdd.txt', delimiter='		', names=['r', 'señal fff 10x10', 'error fff 10x10'])
-pcrFFF10_115 = pd.read_csv('FFF/txt/10x10/10x10pro-cr-115.txt', delimiter='		', names=['r', 'señal fff 10x10', 'error fff 10x10'])
-pinFFF10_115 = pd.read_csv('FFF/txt/10x10/10x10pro-in-115.txt', delimiter='		', names=['r', 'señal fff 10x10', 'error fff 10x10'])
+pddFFF10_115 = pd.read_csv('FFF/txt/10x10/10x10pdd.txt', delimiter='		', engine='python', names=['r', 'señal fff 10x10', 'error fff 10x10'])
+pcrFFF10_115 = pd.read_csv('FFF/txt/10x10/10x10pro-cr-115.txt', delimiter='		', engine='python', names=['r', 'señal fff 10x10', 'error fff 10x10'])
+pinFFF10_115 = pd.read_csv('FFF/txt/10x10/10x10pro-in-115.txt', delimiter='		', engine='python', names=['r', 'señal fff 10x10', 'error fff 10x10'])
 
 
 ## 20x20
 
-pddopen20_115 = pd.read_csv('OPEN/txt/20x20/20x20pdd.txt', delimiter='		', names=['r', 'señal open 20x20', 'error open 20x20'])
-pcropen20_115 = pd.read_csv('OPEN/txt/20x20/20x20pro-cr-115.txt', delimiter='		', names=['r', 'señal open 20x20', 'error open 20x20'])
-pinopen20_115 = pd.read_csv('OPEN/txt/20x20/20x20pro-in-115.txt', delimiter='		', names=['r', 'señal open 20x20', 'error open 20x20'])
+pddopen20_115 = pd.read_csv('OPEN/txt/20x20/20x20pdd.txt', delimiter='		', engine='python', names=['r', 'señal open 20x20', 'error open 20x20'])
+pcropen20_115 = pd.read_csv('OPEN/txt/20x20/20x20pro-cr-115.txt', delimiter='		', engine='python', names=['r', 'señal open 20x20', 'error open 20x20'])
+pinopen20_115 = pd.read_csv('OPEN/txt/20x20/20x20pro-in-115.txt', delimiter='		', engine='python', names=['r', 'señal open 20x20', 'error open 20x20'])
 
-pddFFF20_115 = pd.read_csv('FFF/txt/20x20/20x20pdd.txt', delimiter='		', names=['r', 'señal fff 20x20', 'error fff 20x20'])
-pcrFFF20_115 = pd.read_csv('FFF/txt/20x20/20x20pro-cr-115.txt', delimiter='		', names=['r', 'señal fff 20x20', 'error fff 20x20'])
-pinFFF20_115 = pd.read_csv('FFF/txt/20x20/20x20pro-in-115.txt', delimiter='		', names=['r', 'señal fff 20x20', 'error fff 20x20'])
+pddFFF20_115 = pd.read_csv('FFF/txt/20x20/20x20pdd.txt', delimiter='		', engine='python', names=['r', 'señal fff 20x20', 'error fff 20x20'])
+pcrFFF20_115 = pd.read_csv('FFF/txt/20x20/20x20pro-cr-115.txt', delimiter='		', engine='python', names=['r', 'señal fff 20x20', 'error fff 20x20'])
+pinFFF20_115 = pd.read_csv('FFF/txt/20x20/20x20pro-in-115.txt', delimiter='		', engine='python', names=['r', 'señal fff 20x20', 'error fff 20x20'])
 
 
 ## 40x40
 
-pddopen40_115 = pd.read_csv('OPEN/txt/40x40/40x40pdd.txt', delimiter='		', names=['r', 'señal open 40x40', 'error open 40x40'])
-pcropen40_115 = pd.read_csv('OPEN/txt/40x40/40x40pro-cr-115.txt', delimiter='		', names=['r', 'señal open 40x40', 'error open 40x40'])
-pinopen40_115 = pd.read_csv('OPEN/txt/40x40/40x40pro-in-115.txt', delimiter='		', names=['r', 'señal open 40x40', 'error open 40x40'])
+pddopen40_115 = pd.read_csv('OPEN/txt/40x40/40x40pdd.txt', delimiter='		', engine='python', names=['r', 'señal open 40x40', 'error open 40x40'])
+pcropen40_115 = pd.read_csv('OPEN/txt/40x40/40x40pro-cr-115.txt', delimiter='		', engine='python', names=['r', 'señal open 40x40', 'error open 40x40'])
+pinopen40_115 = pd.read_csv('OPEN/txt/40x40/40x40pro-in-115.txt', delimiter='		', engine='python', names=['r', 'señal open 40x40', 'error open 40x40'])
 
-pddFFF40_115 = pd.read_csv('FFF/txt/40x40/40x40pdd.txt', delimiter='		', names=['r', 'señal fff 40x40', 'error fff 40x40'])
-pcrFFF40_115 = pd.read_csv('FFF/txt/40x40/40x40pro-cr-115.txt', delimiter='		', names=['r', 'señal fff 40x40', 'error fff 40x40'])
-pinFFF40_115 = pd.read_csv('FFF/txt/40x40/40x40pro-in-115.txt', delimiter='		', names=['r', 'señal fff 40x40', 'error fff 40x40'])
+pddFFF40_115 = pd.read_csv('FFF/txt/40x40/40x40pdd.txt', delimiter='		', engine='python', names=['r', 'señal fff 40x40', 'error fff 40x40'])
+pcrFFF40_115 = pd.read_csv('FFF/txt/40x40/40x40pro-cr-115.txt', delimiter='		', engine='python', names=['r', 'señal fff 40x40', 'error fff 40x40'])
+pinFFF40_115 = pd.read_csv('FFF/txt/40x40/40x40pro-in-115.txt', delimiter='		', engine='python', names=['r', 'señal fff 40x40', 'error fff 40x40'])
 
 
 # 115
 
 ## 5x5
 
-pddopen5_85 = pd.read_csv('OPEN/txt/5x5/5x5pdd.txt', delimiter='		', names=['r', 'señal open 5x5', 'error open 5x5'])
-pcropen5_85 = pd.read_csv('OPEN/txt/5x5/5x5pro-cr-85.txt', delimiter='		', names=['r', 'señal open 5x5', 'error open 5x5'])
-pinopen5_85 = pd.read_csv('OPEN/txt/5x5/5x5pro-in-85.txt', delimiter='		', names=['r', 'señal open 5x5', 'error open 5x5'])
+pddopen5_85 = pd.read_csv('OPEN/txt/5x5/5x5pdd.txt', delimiter='		', engine='python', names=['r', 'señal open 5x5', 'error open 5x5'])
+pcropen5_85 = pd.read_csv('OPEN/txt/5x5/5x5pro-cr-85.txt', delimiter='		', engine='python', names=['r', 'señal open 5x5', 'error open 5x5'])
+pinopen5_85 = pd.read_csv('OPEN/txt/5x5/5x5pro-in-85.txt', delimiter='		', engine='python', names=['r', 'señal open 5x5', 'error open 5x5'])
 
-pddFFF5_85 = pd.read_csv('FFF/txt/5x5/5x5pdd.txt', delimiter='		', names=['r', 'señal fff 5x5', 'error fff 5x5'])
-pcrFFF5_85 = pd.read_csv('FFF/txt/5x5/5x5pro-cr-85.txt', delimiter='		', names=['r', 'señal fff 5x5', 'error fff 5x5'])
-pinFFF5_85 = pd.read_csv('FFF/txt/5x5/5x5pro-in-85.txt', delimiter='		', names=['r', 'señal fff 5x5', 'error fff 5x5'])
+pddFFF5_85 = pd.read_csv('FFF/txt/5x5/5x5pdd.txt', delimiter='		', engine='python', names=['r', 'señal fff 5x5', 'error fff 5x5'])
+pcrFFF5_85 = pd.read_csv('FFF/txt/5x5/5x5pro-cr-85.txt', delimiter='		', engine='python', names=['r', 'señal fff 5x5', 'error fff 5x5'])
+pinFFF5_85 = pd.read_csv('FFF/txt/5x5/5x5pro-in-85.txt', delimiter='		', engine='python', names=['r', 'señal fff 5x5', 'error fff 5x5'])
 
 
 ## 10x10
 
-pddopen10_85 = pd.read_csv('OPEN/txt/10x10/10x10pdd.txt', delimiter='		', names=['r', 'señal open 10x10', 'error open 10x10'])
-pcropen10_85 = pd.read_csv('OPEN/txt/10x10/10x10pro-cr-85.txt', delimiter='		', names=['r', 'señal open 10x10', 'error open 10x10'])
-pinopen10_85 = pd.read_csv('OPEN/txt/10x10/10x10pro-in-85.txt', delimiter='		', names=['r', 'señal open 10x10', 'error open 10x10'])
+pddopen10_85 = pd.read_csv('OPEN/txt/10x10/10x10pdd.txt', delimiter='		', engine='python', names=['r', 'señal open 10x10', 'error open 10x10'])
+pcropen10_85 = pd.read_csv('OPEN/txt/10x10/10x10pro-cr-85.txt', delimiter='		', engine='python', names=['r', 'señal open 10x10', 'error open 10x10'])
+pinopen10_85 = pd.read_csv('OPEN/txt/10x10/10x10pro-in-85.txt', delimiter='		', engine='python', names=['r', 'señal open 10x10', 'error open 10x10'])
 
-pddFFF10_85 = pd.read_csv('FFF/txt/10x10/10x10pdd.txt', delimiter='		', names=['r', 'señal fff 10x10', 'error fff 10x10'])
-pcrFFF10_85 = pd.read_csv('FFF/txt/10x10/10x10pro-cr-85.txt', delimiter='		', names=['r', 'señal fff 10x10', 'error fff 10x10'])
-pinFFF10_85 = pd.read_csv('FFF/txt/10x10/10x10pro-in-85.txt', delimiter='		', names=['r', 'señal fff 10x10', 'error fff 10x10'])
+pddFFF10_85 = pd.read_csv('FFF/txt/10x10/10x10pdd.txt', delimiter='		', engine='python', names=['r', 'señal fff 10x10', 'error fff 10x10'])
+pcrFFF10_85 = pd.read_csv('FFF/txt/10x10/10x10pro-cr-85.txt', delimiter='		', engine='python', names=['r', 'señal fff 10x10', 'error fff 10x10'])
+pinFFF10_85 = pd.read_csv('FFF/txt/10x10/10x10pro-in-85.txt', delimiter='		', engine='python', names=['r', 'señal fff 10x10', 'error fff 10x10'])
 
 
 ## 20x20
 
-pddopen20_85 = pd.read_csv('OPEN/txt/20x20/20x20pdd.txt', delimiter='		', names=['r', 'señal open 20x20', 'error open 20x20'])
-pcropen20_85 = pd.read_csv('OPEN/txt/20x20/20x20pro-cr-85.txt', delimiter='		', names=['r', 'señal open 20x20', 'error open 20x20'])
-pinopen20_85 = pd.read_csv('OPEN/txt/20x20/20x20pro-in-85.txt', delimiter='		', names=['r', 'señal open 20x20', 'error open 20x20'])
+pddopen20_85 = pd.read_csv('OPEN/txt/20x20/20x20pdd.txt', delimiter='		', engine='python', names=['r', 'señal open 20x20', 'error open 20x20'])
+pcropen20_85 = pd.read_csv('OPEN/txt/20x20/20x20pro-cr-85.txt', delimiter='		', engine='python', names=['r', 'señal open 20x20', 'error open 20x20'])
+pinopen20_85 = pd.read_csv('OPEN/txt/20x20/20x20pro-in-85.txt', delimiter='		', engine='python', names=['r', 'señal open 20x20', 'error open 20x20'])
 
-pddFFF20_85 = pd.read_csv('FFF/txt/20x20/20x20pdd.txt', delimiter='		', names=['r', 'señal fff 20x20', 'error fff 20x20'])
-pcrFFF20_85 = pd.read_csv('FFF/txt/20x20/20x20pro-cr-85.txt', delimiter='		', names=['r', 'señal fff 20x20', 'error fff 20x20'])
-pinFFF20_85 = pd.read_csv('FFF/txt/20x20/20x20pro-in-85.txt', delimiter='		', names=['r', 'señal fff 20x20', 'error fff 20x20'])
+pddFFF20_85 = pd.read_csv('FFF/txt/20x20/20x20pdd.txt', delimiter='		', engine='python', names=['r', 'señal fff 20x20', 'error fff 20x20'])
+pcrFFF20_85 = pd.read_csv('FFF/txt/20x20/20x20pro-cr-85.txt', delimiter='		', engine='python', names=['r', 'señal fff 20x20', 'error fff 20x20'])
+pinFFF20_85 = pd.read_csv('FFF/txt/20x20/20x20pro-in-85.txt', delimiter='		', engine='python', names=['r', 'señal fff 20x20', 'error fff 20x20'])
 
 
 ## 40x40
 
-pddopen40_85 = pd.read_csv('OPEN/txt/40x40/40x40pdd.txt', delimiter='		', names=['r', 'señal open 40x40', 'error open 40x40'])
-pcropen40_85 = pd.read_csv('OPEN/txt/40x40/40x40pro-cr-85.txt', delimiter='		', names=['r', 'señal open 40x40', 'error open 40x40'])
-pinopen40_85 = pd.read_csv('OPEN/txt/40x40/40x40pro-in-85.txt', delimiter='		', names=['r', 'señal open 40x40', 'error open 40x40'])
+pddopen40_85 = pd.read_csv('OPEN/txt/40x40/40x40pdd.txt', delimiter='		', engine='python', names=['r', 'señal open 40x40', 'error open 40x40'])
+pcropen40_85 = pd.read_csv('OPEN/txt/40x40/40x40pro-cr-85.txt', delimiter='		', engine='python', names=['r', 'señal open 40x40', 'error open 40x40'])
+pinopen40_85 = pd.read_csv('OPEN/txt/40x40/40x40pro-in-85.txt', delimiter='		', engine='python', names=['r', 'señal open 40x40', 'error open 40x40'])
 
-pddFFF40_85 = pd.read_csv('FFF/txt/40x40/40x40pdd.txt', delimiter='		', names=['r', 'señal fff 40x40', 'error fff 40x40'])
-pcrFFF40_85 = pd.read_csv('FFF/txt/40x40/40x40pro-cr-85.txt', delimiter='		', names=['r', 'señal fff 40x40', 'error fff 40x40'])
-pinFFF40_85 = pd.read_csv('FFF/txt/40x40/40x40pro-in-85.txt', delimiter='		', names=['r', 'señal fff 40x40', 'error fff 40x40'])
+pddFFF40_85 = pd.read_csv('FFF/txt/40x40/40x40pdd.txt', delimiter='		', engine='python', names=['r', 'señal fff 40x40', 'error fff 40x40'])
+pcrFFF40_85 = pd.read_csv('FFF/txt/40x40/40x40pro-cr-85.txt', delimiter='		', engine='python', names=['r', 'señal fff 40x40', 'error fff 40x40'])
+pinFFF40_85 = pd.read_csv('FFF/txt/40x40/40x40pro-in-85.txt', delimiter='		', engine='python', names=['r', 'señal fff 40x40', 'error fff 40x40'])
 
 
 # Merge Data
