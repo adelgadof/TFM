@@ -1,6 +1,5 @@
 import pandas as pd 
 import numpy as np 
-pd.options.plotting.backend = 'plotly'
 
 # Cuadrados 100
 
