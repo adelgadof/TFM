@@ -1,8 +1,5 @@
 import pandas as pd 
 import numpy as np 
-from numba import jit
-import os
-os.environ['CUDA_VISIBLE_DEVICES'] = "0"
 
 
 from datetime import datetime
@@ -508,6 +505,7 @@ z_y_u = 29.8
 z_x_d = 50.9
 z_y_d = 42.6
 
+
 def pos_neg(number):
 
     x_01pos = []
@@ -615,12 +613,11 @@ print(datetime.now()-time0)
 # \\[\Phi_{horn} = 1+ \rho^2\sum^4_{j=0} h_j^{\gamma, e} \rho^j \\]
 
 
-
+ 
 print('Iterating...')
 
 
 MixedNoFFF['Rho'] = np.abs(MixedNoFFF['r'])/(MixedNoFFF['Z'])
-
 
 def Iterator(number):
     for delt0 in np.linspace(0.001, 4, number):
@@ -639,7 +636,7 @@ def Iterator(number):
 
                             MixedNoFFF['delta0 = ' + str(delt0) + ' h0 = ' + str(h0) + ' h1 = ' + str(h1) + ' h2 = ' + str(h2) + ' h3 = ' + str(h3) + ' h4 = ' + str(h4)] = MixedNoFFF['Big Z'] * (Arg1+Arg2) * (Arg3+Arg4) * (1 + MixedNoFFF['Rho']**2 * (h0 * MixedNoFFF['Rho'] + h1 * MixedNoFFF['Rho'] + h2 * MixedNoFFF['Rho'] + h3 * MixedNoFFF['Rho']+ h4 * MixedNoFFF['Rho']))
 
-Iterator(14)
+Iterator(2)
 print(datetime.now()-time0)
              
                         
@@ -660,7 +657,7 @@ y = MixedNoFFF[['señal']]
 ScoresMAE = []
 ScoresRF = []
 
-@jit
+
 def RFIterator(Start):
     for i in np.arange(Start, MixedNoFFF.shape[1]):
 
