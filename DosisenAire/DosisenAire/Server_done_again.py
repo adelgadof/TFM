@@ -1,5 +1,13 @@
 import pandas as pd 
 import numpy as np 
+from numba import jit
+import os
+os.environ['CUDA_VISIBLE_DEVICES'] = "0"
+
+
+from datetime import datetime
+
+time0 = datetime.now()
 
 # Cuadrados 100
 
@@ -491,14 +499,7 @@ print('Obtained Z')
 
 
 
-x_01pos = []
-x_01neg = []
-x_02pos = []
-x_02neg = []
-y_01pos = []
-y_01neg = []
-y_02pos = []
-y_02neg = []
+
 
 
 z_x_u = 43.1
@@ -507,83 +508,99 @@ z_y_u = 29.8
 z_x_d = 50.9
 z_y_d = 42.6
 
+def pos_neg(number):
+
+    x_01pos = []
+    x_01neg = []
+    x_02pos = []
+    x_02neg = []
+    y_01pos = []
+    y_01neg = []
+    y_02pos = []
+    y_02neg = []
+
+    for i in np.arange(number, MixedNoFFF.shape[0]):
+        if MixedNoFFF[['In']].loc[i].to_numpy() == 1:
+            x_01pos.append(float((z_x_u*MixedNoFFF[['Limit']].loc[i].to_numpy()*MixedNoFFF[['Z']].loc[i].to_numpy() - z_x_u*2*100*MixedNoFFF[['r']].loc[i].to_numpy())/(2*100*(MixedNoFFF[['Z']].loc[i].to_numpy() - z_x_u))))
+            x_01neg.append(float((z_x_u*MixedNoFFF[['Limit']].loc[i].to_numpy()*MixedNoFFF[['Z']].loc[i].to_numpy() + z_x_u*2*100*MixedNoFFF[['r']].loc[i].to_numpy())/(2*100*(MixedNoFFF[['Z']].loc[i].to_numpy() - z_x_u))))
+            x_02pos.append(float((z_x_d*MixedNoFFF[['Limit']].loc[i].to_numpy()*MixedNoFFF[['Z']].loc[i].to_numpy() - z_x_d*2*100*MixedNoFFF[['r']].loc[i].to_numpy())/(2*100*(MixedNoFFF[['Z']].loc[i].to_numpy() - z_x_d))))
+            x_02neg.append(float((z_x_d*MixedNoFFF[['Limit']].loc[i].to_numpy()*MixedNoFFF[['Z']].loc[i].to_numpy() + z_x_d*2*100*MixedNoFFF[['r']].loc[i].to_numpy())/(2*100*(MixedNoFFF[['Z']].loc[i].to_numpy() - z_x_d))))
 
 
-for i in np.arange(0, MixedNoFFF.shape[0]):
-    if MixedNoFFF[['In']].loc[i].to_numpy() == 1:
-        x_01pos.append(float((z_x_u*MixedNoFFF[['Limit']].loc[i].to_numpy()*MixedNoFFF[['Z']].loc[i].to_numpy() - z_x_u*2*100*MixedNoFFF[['r']].loc[i].to_numpy())/(2*100*(MixedNoFFF[['Z']].loc[i].to_numpy() - z_x_u))))
-        x_01neg.append(float((z_x_u*MixedNoFFF[['Limit']].loc[i].to_numpy()*MixedNoFFF[['Z']].loc[i].to_numpy() + z_x_u*2*100*MixedNoFFF[['r']].loc[i].to_numpy())/(2*100*(MixedNoFFF[['Z']].loc[i].to_numpy() - z_x_u))))
-        x_02pos.append(float((z_x_d*MixedNoFFF[['Limit']].loc[i].to_numpy()*MixedNoFFF[['Z']].loc[i].to_numpy() - z_x_d*2*100*MixedNoFFF[['r']].loc[i].to_numpy())/(2*100*(MixedNoFFF[['Z']].loc[i].to_numpy() - z_x_d))))
-        x_02neg.append(float((z_x_d*MixedNoFFF[['Limit']].loc[i].to_numpy()*MixedNoFFF[['Z']].loc[i].to_numpy() + z_x_d*2*100*MixedNoFFF[['r']].loc[i].to_numpy())/(2*100*(MixedNoFFF[['Z']].loc[i].to_numpy() - z_x_d))))
+            y_01pos.append(float((z_y_u*MixedNoFFF[['Limit']].loc[i].to_numpy()*MixedNoFFF[['Z']].loc[i].to_numpy())/(2*100*(MixedNoFFF[['Z']].loc[i].to_numpy() - z_y_u))))
+            y_01neg.append(float((z_y_u*MixedNoFFF[['Limit']].loc[i].to_numpy()*MixedNoFFF[['Z']].loc[i].to_numpy())/(2*100*(MixedNoFFF[['Z']].loc[i].to_numpy() - z_y_u))))
+            y_02pos.append(float((z_y_d*MixedNoFFF[['Limit']].loc[i].to_numpy()*MixedNoFFF[['Z']].loc[i].to_numpy())/(2*100*(MixedNoFFF[['Z']].loc[i].to_numpy() - z_y_d))))
+            y_02neg.append(float((z_y_d*MixedNoFFF[['Limit']].loc[i].to_numpy()*MixedNoFFF[['Z']].loc[i].to_numpy())/(2*100*(MixedNoFFF[['Z']].loc[i].to_numpy() - z_y_d))))
 
-                       
-        y_01pos.append(float((z_y_u*MixedNoFFF[['Limit']].loc[i].to_numpy()*MixedNoFFF[['Z']].loc[i].to_numpy())/(2*100*(MixedNoFFF[['Z']].loc[i].to_numpy() - z_y_u))))
-        y_01neg.append(float((z_y_u*MixedNoFFF[['Limit']].loc[i].to_numpy()*MixedNoFFF[['Z']].loc[i].to_numpy())/(2*100*(MixedNoFFF[['Z']].loc[i].to_numpy() - z_y_u))))
-        y_02pos.append(float((z_y_d*MixedNoFFF[['Limit']].loc[i].to_numpy()*MixedNoFFF[['Z']].loc[i].to_numpy())/(2*100*(MixedNoFFF[['Z']].loc[i].to_numpy() - z_y_d))))
-        y_02neg.append(float((z_y_d*MixedNoFFF[['Limit']].loc[i].to_numpy()*MixedNoFFF[['Z']].loc[i].to_numpy())/(2*100*(MixedNoFFF[['Z']].loc[i].to_numpy() - z_y_d))))
+
+        else:    
+            x_01pos.append(float((z_x_u*MixedNoFFF[['Limit']].loc[i].to_numpy()*MixedNoFFF[['Z']].loc[i].to_numpy())/(2*100*(MixedNoFFF[['Z']].loc[i].to_numpy() - z_x_u))))
+            x_01neg.append(float((z_x_u*MixedNoFFF[['Limit']].loc[i].to_numpy()*MixedNoFFF[['Z']].loc[i].to_numpy())/(2*100*(MixedNoFFF[['Z']].loc[i].to_numpy() - z_x_u))))
+            x_02pos.append(float((z_x_d*MixedNoFFF[['Limit']].loc[i].to_numpy()*MixedNoFFF[['Z']].loc[i].to_numpy())/(2*100*(MixedNoFFF[['Z']].loc[i].to_numpy() - z_x_d))))
+            x_02neg.append(float((z_x_d*MixedNoFFF[['Limit']].loc[i].to_numpy()*MixedNoFFF[['Z']].loc[i].to_numpy())/(2*100*(MixedNoFFF[['Z']].loc[i].to_numpy() - z_x_d))))
+
+
+            y_01pos.append(float((z_y_u*MixedNoFFF[['Limit']].loc[i].to_numpy()*MixedNoFFF[['Z']].loc[i].to_numpy() - z_y_u*2*100*MixedNoFFF[['r']].loc[i].to_numpy())/(2*100*(MixedNoFFF[['Z']].loc[i].to_numpy() - z_y_u))))
+            y_01neg.append(float((z_y_u*MixedNoFFF[['Limit']].loc[i].to_numpy()*MixedNoFFF[['Z']].loc[i].to_numpy() + z_y_u*2*100*MixedNoFFF[['r']].loc[i].to_numpy())/(2*100*(MixedNoFFF[['Z']].loc[i].to_numpy() - z_y_u))))
+            y_02pos.append(float((z_y_d*MixedNoFFF[['Limit']].loc[i].to_numpy()*MixedNoFFF[['Z']].loc[i].to_numpy() - z_y_d*2*100*MixedNoFFF[['r']].loc[i].to_numpy())/(2*100*(MixedNoFFF[['Z']].loc[i].to_numpy() - z_y_d))))
+            y_02neg.append(float((z_y_d*MixedNoFFF[['Limit']].loc[i].to_numpy()*MixedNoFFF[['Z']].loc[i].to_numpy() - z_y_d*2*100*MixedNoFFF[['r']].loc[i].to_numpy())/(2*100*(MixedNoFFF[['Z']].loc[i].to_numpy() - z_y_d))))
+
+
+
+    x_0pos = []
+    for i, j in zip(x_01pos, x_02pos):
+        if i<j:
+            x_0pos.append(float(i))
+        else:
+            x_0pos.append(float(j))
+
+    y_0pos = []
+    for i, j in zip(y_01pos, y_02pos):
+        if i<j:
+            y_0pos.append(float(i))
+        else:
+            y_0pos.append(float(j))
+
+
+    x_0neg = []
+    for i, j in zip(x_01neg, x_02neg):
+        if i<j:
+            x_0neg.append(float(i))
+        else:
+            x_0neg.append(float(j))
+
+    y_0neg = []
+    for i, j in zip(y_01neg, y_02neg):
+        if i<j:
+            y_0neg.append(float(i))
+        else:
+            y_0neg.append(float(j))
+
+    MixedIn0 = MixedNoFFF[MixedNoFFF['In']==0]
+    MixedIn1 = MixedNoFFF[MixedNoFFF['In']==1]
+
+
+    MixedNoFFF['xpos'] = x_0pos
+    MixedNoFFF['xneg'] = x_0neg
+
+    MixedNoFFF['ypos'] = y_0pos
+    MixedNoFFF['yneg'] = y_0neg
+
+pos_neg(0)
+            
     
-
-    else:    
-        x_01pos.append(float((z_x_u*MixedNoFFF[['Limit']].loc[i].to_numpy()*MixedNoFFF[['Z']].loc[i].to_numpy())/(2*100*(MixedNoFFF[['Z']].loc[i].to_numpy() - z_x_u))))
-        x_01neg.append(float((z_x_u*MixedNoFFF[['Limit']].loc[i].to_numpy()*MixedNoFFF[['Z']].loc[i].to_numpy())/(2*100*(MixedNoFFF[['Z']].loc[i].to_numpy() - z_x_u))))
-        x_02pos.append(float((z_x_d*MixedNoFFF[['Limit']].loc[i].to_numpy()*MixedNoFFF[['Z']].loc[i].to_numpy())/(2*100*(MixedNoFFF[['Z']].loc[i].to_numpy() - z_x_d))))
-        x_02neg.append(float((z_x_d*MixedNoFFF[['Limit']].loc[i].to_numpy()*MixedNoFFF[['Z']].loc[i].to_numpy())/(2*100*(MixedNoFFF[['Z']].loc[i].to_numpy() - z_x_d))))
-
-                       
-        y_01pos.append(float((z_y_u*MixedNoFFF[['Limit']].loc[i].to_numpy()*MixedNoFFF[['Z']].loc[i].to_numpy() - z_y_u*2*100*MixedNoFFF[['r']].loc[i].to_numpy())/(2*100*(MixedNoFFF[['Z']].loc[i].to_numpy() - z_y_u))))
-        y_01neg.append(float((z_y_u*MixedNoFFF[['Limit']].loc[i].to_numpy()*MixedNoFFF[['Z']].loc[i].to_numpy() + z_y_u*2*100*MixedNoFFF[['r']].loc[i].to_numpy())/(2*100*(MixedNoFFF[['Z']].loc[i].to_numpy() - z_y_u))))
-        y_02pos.append(float((z_y_d*MixedNoFFF[['Limit']].loc[i].to_numpy()*MixedNoFFF[['Z']].loc[i].to_numpy() - z_y_d*2*100*MixedNoFFF[['r']].loc[i].to_numpy())/(2*100*(MixedNoFFF[['Z']].loc[i].to_numpy() - z_y_d))))
-        y_02neg.append(float((z_y_d*MixedNoFFF[['Limit']].loc[i].to_numpy()*MixedNoFFF[['Z']].loc[i].to_numpy() - z_y_d*2*100*MixedNoFFF[['r']].loc[i].to_numpy())/(2*100*(MixedNoFFF[['Z']].loc[i].to_numpy() - z_y_d))))
-
-                       
-                       
-x_0pos = []
-for i, j in zip(x_01pos, x_02pos):
-    if i<j:
-        x_0pos.append(float(i))
-    else:
-        x_0pos.append(float(j))
-
-y_0pos = []
-for i, j in zip(y_01pos, y_02pos):
-    if i<j:
-        y_0pos.append(float(i))
-    else:
-        y_0pos.append(float(j))
-        
-
-x_0neg = []
-for i, j in zip(x_01neg, x_02neg):
-    if i<j:
-        x_0neg.append(float(i))
-    else:
-        x_0neg.append(float(j))
-
-y_0neg = []
-for i, j in zip(y_01neg, y_02neg):
-    if i<j:
-        y_0neg.append(float(i))
-    else:
-        y_0neg.append(float(j))
 
 #Volviendo a la ecuación mostrada antes
 
 # \\[ \Phi_\alpha = \frac{542.085}{z^2}* (\frac{\frac{x_0^+}{0.185}}{\sqrt{1+\frac{x_0^+}{0.185}}} + \frac{\frac{x_0^-}{0.185}}{\sqrt{1-\frac{x_0^-}{0.185}}}) * (\frac{\frac{y_0^+}{0.185}}{\sqrt{1+\frac{y_0^+}{0.185}}} + \frac{\frac{y_0^-}{0.185}}{\sqrt{1-\frac{y_0^-}{0.185}}}) \\]
 
 
-MixedIn0 = MixedNoFFF[MixedNoFFF['In']==0]
-MixedIn1 = MixedNoFFF[MixedNoFFF['In']==1]
 
-
-MixedNoFFF['xpos'] = x_0pos
-MixedNoFFF['xneg'] = x_0neg
-
-MixedNoFFF['ypos'] = y_0pos
-MixedNoFFF['yneg'] = y_0neg
 
 
 print('Obtained pos and neg ts')
 
+print(datetime.now()-time0)
 
 
 # \\[ \Phi_\gamma (x,y,z) = w_0 \Phi_0(x,y,z) \Phi_{horn}^\gamma (x,y,z) \\]
@@ -604,23 +621,27 @@ print('Iterating...')
 
 MixedNoFFF['Rho'] = np.abs(MixedNoFFF['r'])/(MixedNoFFF['Z'])
 
-for delt0 in np.arange(0.001, 3.5, 12):
 
-    Arg1 = (MixedNoFFF['xpos']/delt0)/((1 + (MixedNoFFF['xpos']/delt0)**2)**(1/2))
-    Arg2 = (MixedNoFFF['xneg']/delt0)/((1 + (MixedNoFFF['xneg']/delt0)**2)**(1/2))
+def Iterator(number):
+    for delt0 in np.linspace(0.001, 4, number):
 
-    Arg3 = (MixedNoFFF['ypos']/delt0)/((1 + (MixedNoFFF['ypos']/delt0)**2)**(1/2))
-    Arg4 = (MixedNoFFF['yneg']/delt0)/((1 + (MixedNoFFF['yneg']/delt0)**2)**(1/2))
-    
-    for h0 in np.linspace(100, 200, 12):
-        for h1 in np.linspace(-6000, -3000, 12):
-            for h2 in np.linspace(40000, 70000, 12):
-                for h3 in np.linspace(-400000, -150000, 12):
-                    for h4 in np.linspace(800000, 300000, 12):
+        Arg1 = (MixedNoFFF['xpos']/delt0)/((1 + (MixedNoFFF['xpos']/delt0)**2)**(1/2))
+        Arg2 = (MixedNoFFF['xneg']/delt0)/((1 + (MixedNoFFF['xneg']/delt0)**2)**(1/2))
 
-                        MixedNoFFF['delta0 = ' + str(delt0) + ' h0 = ' + str(h0) + ' h1 = ' + str(h1) + ' h2 = ' + str(h2) + ' h3 = ' + str(h3) + ' h4 = ' + str(h4)] = MixedNoFFF['Big Z'] * (Arg1+Arg2) * (Arg3+Arg4) * (1 + MixedNoFFF['Rho']**2 * (h0 * MixedNoFFF['Rho'] + h1 * MixedNoFFF['Rho'] + h2 * MixedNoFFF['Rho'] + h3 * MixedNoFFF['Rho']+ h4 * MixedNoFFF['Rho']))
+        Arg3 = (MixedNoFFF['ypos']/delt0)/((1 + (MixedNoFFF['ypos']/delt0)**2)**(1/2))
+        Arg4 = (MixedNoFFF['yneg']/delt0)/((1 + (MixedNoFFF['yneg']/delt0)**2)**(1/2))
+        
+        for h0 in np.linspace(50, 300, number):
+            for h1 in np.linspace(-7000, -2000, number):
+                for h2 in np.linspace(30000, 80000, number):
+                    for h3 in np.linspace(-450000, -1500000, number):
+                        for h4 in np.linspace(800000, 200000, number):
 
-                        
+                            MixedNoFFF['delta0 = ' + str(delt0) + ' h0 = ' + str(h0) + ' h1 = ' + str(h1) + ' h2 = ' + str(h2) + ' h3 = ' + str(h3) + ' h4 = ' + str(h4)] = MixedNoFFF['Big Z'] * (Arg1+Arg2) * (Arg3+Arg4) * (1 + MixedNoFFF['Rho']**2 * (h0 * MixedNoFFF['Rho'] + h1 * MixedNoFFF['Rho'] + h2 * MixedNoFFF['Rho'] + h3 * MixedNoFFF['Rho']+ h4 * MixedNoFFF['Rho']))
+
+Iterator(14)
+print(datetime.now()-time0)
+             
                         
 print('Finished iterations, now on to obtain both MAE from analytic equation and MAE from RF')
 
@@ -639,37 +660,31 @@ y = MixedNoFFF[['señal']]
 ScoresMAE = []
 ScoresRF = []
 
-for i in np.arange(10, MixedNoFFF.shape[1]):
+@jit
+def RFIterator(Start):
+    for i in np.arange(Start, MixedNoFFF.shape[1]):
 
-    x = MixedNoFFF.iloc[:,[i]]
+        x = MixedNoFFF.iloc[:,[i]]
 
-    ScoresMAE.append(mean_absolute_error(x, y))
-                     
-    RFx = MixedNoFFF.iloc[:,[0, 3, 4, 5, 6, 7, 8, 9, i]]
-                     
-    x_train, x_test, y_train, y_test = train_test_split(RFx, y)
-    
-    RF.fit(x_train, np.ravel(y_train))
-    ScoresRF.append((mean_absolute_error(RF.predict(x_test), y_test)))
+        ScoresMAE.append(mean_absolute_error(x, y))
+                        
+        RFx = MixedNoFFF.iloc[:,[0, 3, 4, 5, 6, 7, 8, 9, 10, 11, i]]
+                        
+        x_train, x_test, y_train, y_test = train_test_split(RFx, y)
+        
+        RF.fit(x_train, np.ravel(y_train))
+        ScoresRF.append((mean_absolute_error(RF.predict(x_test), y_test)))
+
+RFIterator(12)
 
 ## Save best result and error associated
                      
                      
-print('Best analytic solution MAE: ' + str(pd.DataFrame(ScoresMAE).sort_values(0)[0]))
-print('Best RF solution MAE: ' + str(pd.DataFrame(ScoresRF).sort_values(0)[0]))
+print('Best analytic solution MAE: ' + str(pd.DataFrame(ScoresMAE).sort_values(0).iloc[[0],:]))
+print('Best RF solution MAE: ' + str(pd.DataFrame(ScoresRF).sort_values(0).iloc[[0],:]))
 
                      
-x.iloc[:,[0, 3, 4, 5, 6, 7, 8, 9,  pd.DataFrame(ScoresMAE).sort_values(0).index[0]+10]].to_csv('x.csv')
+MixedNoFFF.iloc[:,[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, pd.DataFrame(ScoresMAE).sort_values(0).index[0]+12]].to_csv('x.csv')
 
-RFx.iloc[:,[0, 3, 4, 5, 6, 7, 8, 9,  pd.DataFrame(ScoresRF).sort_values(0).index[0]+10]].to_csv('RFX.csv')
-                     
-
-
-print('Saving results')
-
-
-
-                        
-                        
-   
-    
+MixedNoFFF.iloc[:,[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11,  pd.DataFrame(ScoresRF).sort_values(0).index[0]+12]].to_csv('RFX.csv')
+print(datetime.now()-time0)
