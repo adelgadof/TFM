@@ -636,7 +636,7 @@ def Iterator(number):
 
                             MixedNoFFF['delta0 = ' + str(delt0) + ' h0 = ' + str(h0) + ' h1 = ' + str(h1) + ' h2 = ' + str(h2) + ' h3 = ' + str(h3) + ' h4 = ' + str(h4)] = MixedNoFFF['Big Z'] * (Arg1+Arg2) * (Arg3+Arg4) * (1 + MixedNoFFF['Rho']**2 * (h0 * MixedNoFFF['Rho'] + h1 * MixedNoFFF['Rho'] + h2 * MixedNoFFF['Rho'] + h3 * MixedNoFFF['Rho']+ h4 * MixedNoFFF['Rho']))
 
-Iterator(2)
+Iterator(8)
 print(datetime.now()-time0)
              
                         
