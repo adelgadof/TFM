@@ -637,7 +637,7 @@ Analyticresult = []
 
 def Iterator(number):
     Counter = 0
-    for delt0 in np.linspace(0.001, 4, number):
+    for delt0 in np.linspace(0.0001, 1, number):
         Counter = Counter+1
 
         Arg1 = (MixedNoFFF['xpos']/delt0)/((1 + (MixedNoFFF['xpos']/delt0)**2)**(1/2))
@@ -646,19 +646,19 @@ def Iterator(number):
         Arg3 = (MixedNoFFF['ypos']/delt0)/((1 + (MixedNoFFF['ypos']/delt0)**2)**(1/2))
         Arg4 = (MixedNoFFF['yneg']/delt0)/((1 + (MixedNoFFF['yneg']/delt0)**2)**(1/2))
         
-        for h0 in np.linspace(50, 300, number):
+        for h0 in np.linspace(150, 300, number):
             Counter = Counter + 1
 
-            for h1 in np.linspace(-7000, -2000, number):
+            for h1 in np.linspace(-4000, -2000, number):
                 Counter = Counter + 1
 
-                for h2 in np.linspace(30000, 80000, number):
+                for h2 in np.linspace(25000, 50000, number):
                     Counter = Counter + 1
 
-                    for h3 in np.linspace(-450000, -1500000, number):
+                    for h3 in np.linspace(-650000, -1300000, number):
                         Counter = Counter + 1
 
-                        for h4 in np.linspace(800000, 200000, number):
+                        for h4 in np.linspace(100000, 1000000, number):
                             Counter = Counter + 1
                             if Counter % 1000 == 0:
                                 print(str((Counter/(number**6))*100) + str('%'))
