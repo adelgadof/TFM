@@ -619,35 +619,12 @@ print('Iterating...')
 
 MixedNoFFF['Rho'] = np.abs(MixedNoFFF['r'])/(MixedNoFFF['Z'])
 
-def Iterator(number):
-    for delt0 in np.linspace(0.001, 4, number):
 
-        Arg1 = (MixedNoFFF['xpos']/delt0)/((1 + (MixedNoFFF['xpos']/delt0)**2)**(1/2))
-        Arg2 = (MixedNoFFF['xneg']/delt0)/((1 + (MixedNoFFF['xneg']/delt0)**2)**(1/2))
 
-        Arg3 = (MixedNoFFF['ypos']/delt0)/((1 + (MixedNoFFF['ypos']/delt0)**2)**(1/2))
-        Arg4 = (MixedNoFFF['yneg']/delt0)/((1 + (MixedNoFFF['yneg']/delt0)**2)**(1/2))
-        
-        for h0 in np.linspace(50, 300, number):
-            for h1 in np.linspace(-7000, -2000, number):
-                for h2 in np.linspace(30000, 80000, number):
-                    for h3 in np.linspace(-450000, -1500000, number):
-                        for h4 in np.linspace(800000, 200000, number):
-
-                            MixedNoFFF['delta0 = ' + str(delt0) + ' h0 = ' + str(h0) + ' h1 = ' + str(h1) + ' h2 = ' + str(h2) + ' h3 = ' + str(h3) + ' h4 = ' + str(h4)] = MixedNoFFF['Big Z'] * (Arg1+Arg2) * (Arg3+Arg4) * (1 + MixedNoFFF['Rho']**2 * (h0 * MixedNoFFF['Rho'] + h1 * MixedNoFFF['Rho'] + h2 * MixedNoFFF['Rho'] + h3 * MixedNoFFF['Rho']+ h4 * MixedNoFFF['Rho']))
-
-Iterator(2)
-print(datetime.now()-time0)
-             
-                        
-print('Finished iterations, now on to obtain both MAE from analytic equation and MAE from RF')
 
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_absolute_error
 from sklearn.model_selection import train_test_split
-
-from sklearn.preprocessing import MinMaxScaler
-
 
 RF = RandomForestRegressor()
 
@@ -656,32 +633,67 @@ y = MixedNoFFF[['señal']]
 
 ScoresMAE = []
 ScoresRF = []
+Analyticresult = []
 
+def Iterator(number):
+    Counter = 0
+    for delt0 in np.linspace(0.001, 4, number):
+        Counter = Counter+1
 
-def RFIterator(Start):
-    for i in np.arange(Start, MixedNoFFF.shape[1]):
+        Arg1 = (MixedNoFFF['xpos']/delt0)/((1 + (MixedNoFFF['xpos']/delt0)**2)**(1/2))
+        Arg2 = (MixedNoFFF['xneg']/delt0)/((1 + (MixedNoFFF['xneg']/delt0)**2)**(1/2))
 
-        x = MixedNoFFF.iloc[:,[i]]
-
-        ScoresMAE.append(mean_absolute_error(x, y))
-                        
-        RFx = MixedNoFFF.iloc[:,[0, 3, 4, 5, 6, 7, 8, 9, 10, 11, i]]
-                        
-        x_train, x_test, y_train, y_test = train_test_split(RFx, y)
+        Arg3 = (MixedNoFFF['ypos']/delt0)/((1 + (MixedNoFFF['ypos']/delt0)**2)**(1/2))
+        Arg4 = (MixedNoFFF['yneg']/delt0)/((1 + (MixedNoFFF['yneg']/delt0)**2)**(1/2))
         
-        RF.fit(x_train, np.ravel(y_train))
-        ScoresRF.append((mean_absolute_error(RF.predict(x_test), y_test)))
+        for h0 in np.linspace(50, 300, number):
+            Counter = Counter + 1
 
-RFIterator(12)
+            for h1 in np.linspace(-7000, -2000, number):
+                Counter = Counter + 1
 
-## Save best result and error associated
-                     
-                     
-print('Best analytic solution MAE: ' + str(pd.DataFrame(ScoresMAE).sort_values(0).iloc[[0],:]))
-print('Best RF solution MAE: ' + str(pd.DataFrame(ScoresRF).sort_values(0).iloc[[0],:]))
+                for h2 in np.linspace(30000, 80000, number):
+                    Counter = Counter + 1
 
-                     
-MixedNoFFF.iloc[:,[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, pd.DataFrame(ScoresMAE).sort_values(0).index[0]+12]].to_csv('x.csv')
+                    for h3 in np.linspace(-450000, -1500000, number):
+                        Counter = Counter + 1
 
-MixedNoFFF.iloc[:,[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11,  pd.DataFrame(ScoresRF).sort_values(0).index[0]+12]].to_csv('RFX.csv')
+                        for h4 in np.linspace(800000, 200000, number):
+                            Counter = Counter + 1
+                            if Counter % 1000 == 0:
+                                print(str((Counter/(number**6))*100) + str('%'))
+                                print('time elapsed: ' + str(time0 - datetime.now()))
+
+                            Analytic = MixedNoFFF['Big Z'] * (Arg1+Arg2) * (Arg3+Arg4) * (1 + MixedNoFFF['Rho']**2 * (h0 * MixedNoFFF['Rho'] + h1 * MixedNoFFF['Rho'] + h2 * MixedNoFFF['Rho'] + h3 * MixedNoFFF['Rho']+ h4 * MixedNoFFF['Rho']))
+                            Analyticresult.append('delta 0 = ' + str(delt0) + '; h0 = ' +  str(h0) + '; h1 =' + str(h1) + '; h2 = ' + str(h2) + 'h3 = ' + str(h3) + 'h4 =' + str(h4))
+
+                            ScoresMAE.append(mean_absolute_error(Analytic, y))
+                            RFx = np.hstack([MixedNoFFF.iloc[:,[0, 3, 4, 5, 6, 7, 8, 9, 10, 11]].to_numpy(), Analytic.to_numpy().reshape(Analytic.shape[0], 1)])
+                            x_train, x_test, y_train, y_test = train_test_split(RFx, y)
+                            RF.fit(x_train, np.ravel(y_train))
+                            ScoresRF.append(mean_absolute_error(RF.predict(x_test), y_test))
+
+
+
+Iterator(10)
 print(datetime.now()-time0)
+print('Finished iterations, saving results')
+
+
+Results = pd.DataFrame(Analyticresult, columns=['Combination used'])
+Results['Analytic Function score'] = ScoresMAE
+Results['RF score'] = ScoresRF
+
+Results.set_index('Combination used').sort_values('Analytic Function score').to_csv('Scores.csv')
+
+
+
+
+
+
+
+
+
+
+
+
