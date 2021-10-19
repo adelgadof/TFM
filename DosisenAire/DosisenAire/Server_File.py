@@ -662,7 +662,7 @@ def Iterator(number):
                             Counter = Counter + 1
                             if Counter % 1000 == 0:
                                 print(str((Counter/(number**6))*100) + str('%'))
-                                print('time elapsed: ' + str(time0 - datetime.now()))
+                                print('time elapsed: ' + str(datetime.now()-time0))
 
                             Analytic = MixedNoFFF['Big Z'] * (Arg1+Arg2) * (Arg3+Arg4) * (1 + MixedNoFFF['Rho']**2 * (h0 * MixedNoFFF['Rho'] + h1 * MixedNoFFF['Rho'] + h2 * MixedNoFFF['Rho'] + h3 * MixedNoFFF['Rho']+ h4 * MixedNoFFF['Rho']))
                             Analyticresult.append('delta 0 = ' + str(delt0) + '; h0 = ' +  str(h0) + '; h1 =' + str(h1) + '; h2 = ' + str(h2) + 'h3 = ' + str(h3) + 'h4 =' + str(h4))
@@ -675,7 +675,7 @@ def Iterator(number):
 
 
 
-Iterator(10)
+Iterator(9)
 print(datetime.now()-time0)
 print('Finished iterations, saving results')
 
