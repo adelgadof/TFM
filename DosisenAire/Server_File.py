@@ -470,6 +470,7 @@ MixedCR115['In'] = 0
 MixedCR115['Z'] = 115
 
 Mixed = pd.concat([MixedCR, MixedIN, MixedCR85, MixedIN85, MixedCR115, MixedIN115]).reset_index(drop=True)
+Mixed['Limit'] = Mixed['Limit'].values*2
 
 Mixed = Mixed.loc[:,['r', 'señal', 'FFF', 'Limit', 'In', 'Z']]
 
@@ -637,7 +638,7 @@ Analyticresult = []
 
 def Iterator(number):
     Counter = 0
-    for delt0 in np.linspace(0.5, 2, number):
+    for delt0 in np.linspace(0.1, 1.55, number):
         Counter = Counter+1
 
         Arg1 = (MixedNoFFF['xpos']/delt0)/((1 + (MixedNoFFF['xpos']/delt0)**2)**(1/2))
@@ -649,26 +650,43 @@ def Iterator(number):
         for h0 in np.linspace(100, 200, number):
             Counter = Counter + 1
 
-            for h1 in np.linspace(-3750, -2500, number):
+            for h1 in np.linspace(-3000, -2250, number):
                 Counter = Counter + 1
 
-                for h2 in np.linspace(35000, 45000, number):
+                for h2 in np.linspace(37500, 42500, number):
                     Counter = Counter + 1
 
-                    for h3 in np.linspace(-900000, -750000, number):
+                    for h3 in np.linspace(-800000, -725000, number):
                         Counter = Counter + 1
 
-                        for h4 in np.linspace(500000, 900000, number):
+                        for h4 in np.linspace(600000, 800000, number):
                             Counter = Counter + 1
                             if Counter % 1000 == 0:
                                 print(str((Counter/(number**6))*100) + str('%'))
                                 print('time elapsed: ' + str(datetime.now()-time0))
 
                             Analytic = MixedNoFFF['Big Z'] * (Arg1+Arg2) * (Arg3+Arg4) * (1 + MixedNoFFF['Rho']**2 * (h0 * MixedNoFFF['Rho'] + h1 * MixedNoFFF['Rho'] + h2 * MixedNoFFF['Rho'] + h3 * MixedNoFFF['Rho']+ h4 * MixedNoFFF['Rho']))
-                            Analyticresult.append('delta 0 = ' + str(delt0) + '; h0 = ' +  str(h0) + '; h1 =' + str(h1) + '; h2 = ' + str(h2) + 'h3 = ' + str(h3) + 'h4 =' + str(h4))
+                            
+                            
+                            a = Analytic.reset_index(drop=True)
 
-                            ScoresMAE.append(mean_absolute_error(Analytic, y))
+                            
+                            NewA = []
+                            for i in np.arange(0, len(a)):
+                                if MixedNoFFF.loc[i, 'Limit']== 400:
+                                    NewA.append(a[i]*3.7983564632926567)
+                                if MixedNoFFF.loc[i, 'Limit']== 200:
+                                    NewA.append(a[i]*4.406146812362383)
+                                if MixedNoFFF.loc[i, 'Limit']== 100:
+                                    NewA.append(a[i]*5.350154520100614)
+                                if MixedNoFFF.loc[i, 'Limit']== 50:
+                                    NewA.append(a[i]*13.506341128751757)
+
+                            Analyticresult.append('delta 0 = ' + str(delt0) + '; h0 = ' +  str(h0) + '; h1 =' + str(h1) + '; h2 = ' + str(h2) + '; h3 = ' + str(h3) + 'h; 4 =' + str(h4))
+
+                            ScoresMAE.append(mean_absolute_error(NewA, y))
                             RFx = np.hstack([MixedNoFFF.iloc[:,[0, 3, 4, 5, 6, 7, 8, 9, 10, 11]].to_numpy(), Analytic.to_numpy().reshape(Analytic.shape[0], 1)])
+                            
                             x_train, x_test, y_train, y_test = train_test_split(RFx, y)
                             RF.fit(x_train, np.ravel(y_train))
                             ScoresRF.append(mean_absolute_error(RF.predict(x_test), y_test))
@@ -684,7 +702,7 @@ Results = pd.DataFrame(Analyticresult, columns=['Combination used'])
 Results['Analytic Function score'] = ScoresMAE
 Results['RF score'] = ScoresRF
 
-Results.set_index('Combination used').sort_values('Analytic Function score').to_csv('Scores.csv')
+Results.set_index('Combination used').sort_values('Analytic Function score').to_csv('Scores30Oct.csv')
 
 
 
