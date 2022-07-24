@@ -1,0 +1,139 @@
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{mathalfa}
+\usepackage{mathrsfs}
+\usepackage{amssymb}
+\usepackage{dsfont}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{physics}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{siunitx}
+\usepackage{microtype}
+\usepackage{cancel}
+\usepackage{bm}
+%\usepackage[perpage]{footmisc}
+\usepackage[hidelinks=true, hyperfootnotes=true, bookmarks=true]{hyperref}
+\usepackage{mathalfa}
+\usepackage{mathrsfs}
+\usepackage{verbatim}
+\usepackage{import}
+\usepackage{multicol}
+%\usepackage[hang,flushmargin]{footmisc}
+\usepackage{mdframed}
+\usepackage{todonotes}
+\usepackage{listings}
+\usepackage{arydshln}
+
+%REFERENCES
+\usepackage[backend=biber,style=phys,sorting=none, url=false, hyperref=true, eprint=false, maxcitenames=2, maxbibnames=10, abbreviate=false]{biblatex}
+
+\AtEveryBibitem{\clearfield{issn}} %no issn
+\AtEveryBibitem{\clearfield{number}} %no number (issue)
+\AtEveryBibitem{\clearfield{isbn}}  %no isbn
+\AtEveryBibitem{\clearfield{month}}  %no month
+\DeclareFieldFormat{titlecase}{#1}
+
+%remove "In" in articles
+\renewbibmacro{in:}{%
+  \ifentrytype{article}{}{\printtext{\bibstring{in}\intitlepunct}}}
+  
+ %Bold volume
+\DeclareFieldFormat[article]{volume}{\mkbibbold{#1}}
+  
+\numberwithin{equation}{section}
+\usepackage[capitalise, nameinlink]{cleveref}
+
+%FIGURES
+\usepackage{subfigure}
+\usepackage{caption}
+%\usepackage[bf]{subfigure} %bold figure captions
+%\usepackage[labelfont=bf]{caption} %bold subfigure captions
+
+\hypersetup{colorlinks={true},linkcolor={red},citecolor=blue}
+
+\setlength{\parindent}{0cm}	
+\captionsetup[table]{skip=2pt}
+
+\def\arraystretch{1.4}%  1 is the default, change whatever you need
+
+\usepackage[a4paper, 
+	left=30mm,
+	right=30mm,
+	top=30mm,
+	bottom=30mm]{geometry}
+
+\usepackage{fancyhdr}	
+\pagestyle{fancy}
+
+\addto\captionscatalan{%
+	\renewcommand{\figurename}{Figura}%
+}	
+
+\newcommand{\listfl}[2]{#1,\dots,#2}
+
+\newcommand{\const}{ct.}
+\newcommand{\R}{\mathbb{R}}
+
+%mathematical structure
+\newtheorem{theorem}{Teorema}[section]
+\newtheorem{corollary}{Corol·lari}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{definition}{Definició}[section]
+
+%fractions
+\newcommand{\reci}[1]{\frac{1}{#1}}
+\newcommand{\half}{\frac{1}{2}}
+\newcommand{\halfpi}{\frac{\pi}{2}}
+
+%derivates
+\newcommand{\dif}{\mathrm{d}}
+\def\dbar{{\mathchar'26\mkern-12mu \mathrm{d}}}
+\newcommand{\der}[2]{\frac{\dif #1}{\dif #2}}
+\newcommand{\dpart}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\dder}[2]{\frac{\dif^2 #1}{\dif #2^2}}
+\newcommand{\ddpart}[2]{\frac{\partial^2 #1}{\partial #2^2}}
+\renewcommand{\grad}[1]{\vec{\nabla} #1}
+\newcommand{\divg}[1]{\vec{\nabla}\cdot #1}
+\newcommand{\rot}[1]{\vec{\nabla}\times #1}
+\newcommand{\lap}[1]{\nabla^2 #1}
+\renewcommand{\dbar}{\mathchar'26\mkern-12mu d}
+\newcommand{\parcial}[3]{\left(\frac{\partial#1}{\partial#2}\right)_{#3}}
+\newcommand{\parcialsegona}[3]{\left(\frac{\partial^2#1}{\partial#2^2}\right)_{#3}}
+\newcommand{\dpartargs}[3]{\left(\frac{\partial #1}{\partial #2}\right)_{#3}}
+
+%integrals
+\newcommand{\defintegral}[4]{\int_{#1}^{#2}\dif#3 \ #4}
+\newcommand{\integral}[2]{\int\dif#1 \ #2}
+
+%vectors
+\renewcommand{\vec}[1]{\bm{#1}}
+\newcommand{\vecs}[2]{#1_1,\dots,#1_{#2}} % v_1,...,v_n
+\newcommand{\scprod}[2]{\left\langle #1, #2 \right\rangle}
+\newcommand{\bracket}[2]{\left\langle #1 \mid #2 \right\rangle}
+\renewcommand{\ket}[1]{\left| #1 \right\rangle}
+\renewcommand{\bra}[1]{\left\langle #1 \right|}
+\newcommand{\norma}[1]{\big\lVert #1\big\rVert}
+\newcommand{\inangle}[1]{\langle #1 \rangle}
+
+
+%others
+\providecommand{\abs}[1]{\lvert#1\rvert}
+\providecommand{\norm}[1]{\lVert#1\rVert}
+\newcommand{\avg}[1]{\left<#1\right>}
+\newcommand{\parentesi}[1]{\left(#1\right)}
+\newcommand{\claudator}[1]{\left[#1\right]}
+\newcommand{\keys}[1]{\left\{#1\right\}}
+\newcommand{\limitss}[2]{_{#1}^{#2}}
+\newcommand{\insqr}[1]{\left[ #1 \right]}
+
+%math operators
+\DeclareMathOperator*{\mslim}{ms\,-\,lim}
+\DeclareMathOperator{\arccosh}{arccosh}
+\DeclareMathOperator{\arcsinh}{arcsinh}
+\DeclareMathOperator{\arctanh}{arctanh}
+\DeclareMathOperator{\arcsech}{arcsech}
+\DeclareMathOperator{\arccsch}{arccsch}
+\DeclareMathOperator{\arccoth}{arccoth}
