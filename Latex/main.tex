@@ -1,4 +1,9 @@
 \documentclass[openany]{article}
+\usepackage[
+backend=biber,
+style=numeric,
+citestyle=authoryear 
+]{biblatex}
 \usepackage[english]{babel}
 \usepackage{commands}
 \usepackage{xcolor}
@@ -10,7 +15,6 @@
 \usepackage{graphicx}
 \usepackage{multicol,lipsum}
 \usepackage{appendix}
-\usepackage{lipsum}
 \usepackage{mwe}
 \usepackage{amsmath}
 
@@ -21,7 +25,9 @@
 \rhead{\leftmark}
 \cfoot{\thepage}
 
-\usepackage{biblatex} %Imports biblatex package
+
+
+
 \addbibresource{refs.bib}
 
 \begin{document}
@@ -41,8 +47,7 @@
 {\flushleft \LARGE \bfseries MASTER'S THESIS\par}\vspace{2cm}
 
 % Thesis title
-{\flushright \LARGE \bfseries Mixed Monte Carlo - Convolutional Neural Network model for stereotactic radiosurgery with a dynamic micro-
-multileaf collimator  \par}\vspace{2cm}
+{\flushright \LARGE \bfseries Mixed Monte Carlo - Convolutional Neural Network model for stereotactic radiosurgery with a dynamic micro-leaf collimator  \par}\vspace{2cm}
 
 {\flushleft \LARGE \bfseries Armando Delgado Fumero \par}\vspace{1.5cm}
 
@@ -85,7 +90,7 @@ multileaf collimator  \par}\vspace{2cm}
 
 \section{Abstract}
 
-Based on the work of González (2015) \cite{Gonzalez2015}, our goal is to develop a mixed Monte Carlo - Deep Learning based solution that allow us to predict the fluence outcome of a 6 MV Elekta Precise linac. This project goes through two main steps, first, we use Fippel et al (2003) \cite{Fippel} VSM (Virtual Source Model) to get a first approximation to the data, obtaining an equation composed of a Pearson VII distribution modified by another custom equation that defines a depression on the center of each profile. Monte Carlo step of this VSM is used to obtain 6, 5 coefficients that define the central depression present on the profile and a sixth one that defines how abrupt the fluence zone ends. After obtaining this function which approximates the fluence results, we train and test a 1 Dimensional Convolutional Neural Network, improving the results of the analytic function on a 20\% basis.
+Based on the work of (\cite{Gonzalez2015}), our goal is to develop a mixed Monte Carlo - Deep Learning based solution that allow us to predict the fluence outcome of a 6 MV Elekta Precise linac. This project goes through two main steps, first, we use \cite{Fippel} VSM (Virtual Source Model) to get a first approximation to the data, obtaining an equation composed of a Pearson VII distribution modified by another custom equation that defines a depression on the center of each profile. Monte Carlo step of this VSM is used to obtain 6, 5 coefficients that define the central depression present on the profile and a sixth one that defines how abrupt the fluence zone ends. After obtaining this function which approximates the fluence results, we train and test a 1 Dimensional Convolutional Neural Network, improving the results of the analytic function on a 20\% basis.
 
     \vspace{2cm}
     
@@ -107,7 +112,7 @@ A linear acelerator (linac) is an artifact that uses microwave technology to ini
 \begin{figure}[!h]
     \centering
     \includegraphics[width=\textwidth]{fcvm-07-00108-g0003.jpg}
-    \caption{Schematic diagram of a linac \cite{Jumeau}}
+    \caption{Schematic diagram of a linac (\cite{Jumeau})}
     \label{fig:my_label}
 \end{figure}
 
@@ -117,7 +122,7 @@ A linear acelerator (linac) is an artifact that uses microwave technology to ini
 
 \subsection{Dataset}
 
-The data used in this work will be the product of a measuring of the radiation produced by the earlier mentioned Elekta MV 6 over a water mannequin, a quite common method when it comes to radiation procedures \cite{Lutz1984-ex}, \cite{BenitesR2012}, \cite{Gonzalez2015}, \cite{Tessonnier} . The result of these measurings is a total of 96 text files, each one of these correspond to a different combination of height, area and presence (or not) of a scattering part. We can see an example of one of these profiles on Figure 2. Text files shape are as shown on table 1.
+The data used in this work will be the product of a measuring of the radiation produced by the earlier mentioned Elekta MV 6 over a water mannequin, a quite common method when it comes to radiation procedures (\cite{Lutz1984-ex, BenitesR2012, Gonzalez2015, Tessonnier}) . The result of these measurings is a total of 96 text files, each one of these correspond to a different combination of height, area and presence (or not) of a scattering part. We can see an example of one of these profiles on Figure 2. Text files shape are as shown on table 1.
 
 
 \begin{figure}[!h]
@@ -172,9 +177,9 @@ The files in this dataset comprise of all these possible combinations:
 
 \subsection{Goals}
 
-So, this study was focused on obtaining a Virtual Source Model for this linac based on the dataset we do have. Previous models (\cite{BenitesR2012}, \cite{Gonzalez2015}, \cite{Tessonnier}, \cite{10.1007/978-3-642-21198-0_318}, \cite{phdthesis}, \cite{https://doi.org/10.1120/jacmp.v16i1.4992}, \cite{GONZALEZ201716}) have been centered on obtaining an analytic equation that is able to mathematically define the reality. They rely on MonteCarlo or similar methods to obtain coefficients for the equation, however, this may be not the fastest nor the most effective method to obtain these results. With the current expansion of Artificial Intelligence and bayesian statistics, it may be interesting to look up those methods to solve this problem. Our objective however will be mixed. On one hand, we will obtain an analytic equation that defines our problem, obtaining the needed coefficients via MonteCarlo. \\
+So, this study was focused on obtaining a Virtual Source Model for this linac based on the dataset we do have. Previous models (\cite{BenitesR2012, Gonzalez2015, Tessonnier, 10.1007/978-3-642-21198-0_318, https://doi.org/10.1120/jacmp.v16i1.4992, phdthesis, GONZALEZ201716}) have been centered on obtaining an analytic equation that is able to mathematically define the reality. They rely on MonteCarlo or similar methods to obtain coefficients for the equation, however, this may be not the fastest nor the most effective method to obtain these results. With the current expansion of Artificial Intelligence and bayesian statistics, it may be interesting to look up those methods to solve this problem. Our objective however will be mixed. On one hand, we will obtain an analytic equation that defines our problem, obtaining the needed coefficients via MonteCarlo. \\
 
-Once we have solved that part, we will look to improve the current result of the analytic equation feeding that data as input to several Neural Networks, which will try to create a prediction. Using Neural Networks in medical physics is not something new, as it is widely used in cancer recognition \cite{BOTTACI1997469} \cite{Ganesan} \cite{Shen2019}. However, there are not many examples of its use on dosimetry \cite{G_tz_2020} \cite{Jiang} \cite{Lee2019} and most of them are quite new. As said on Lee et al., 2019 \cite{Lee2019}, "The direct Monte Carlo simulation is considered as a state-of-art voxel-based dosimetry technique; however, it incurs an excessive computational cost and time. To overcome the limitations of the direct Monte Carlo approach, we propose using a deep convolutional neural network (CNN) for the voxel dose prediction". However, we mix both methods, trying to obtain best from both worlds.
+Once we have solved that part, we will look to improve the current result of the analytic equation feeding that data as input to several Neural Networks, which will try to create a prediction. Using Neural Networks in medical physics is not something new, as it is widely used in cancer recognition (\cite{BOTTACI1997469, Ganesan, Shen2019}). However, there are not many examples of its use on dosimetry (\cite{G_tz_2020, Jiang, Lee2019}) and most of them are quite new. As said on \cite{Lee2019}, "The direct Monte Carlo simulation is considered as a state-of-art voxel-based dosimetry technique; however, it incurs an excessive computational cost and time. To overcome the limitations of the direct Monte Carlo approach, we propose using a deep convolutional neural network (CNN) for the voxel dose prediction". However, we mix both methods, trying to obtain best from both worlds.
 
 \newpage
 \numberwithin{equation}{section}
@@ -182,7 +187,7 @@ Once we have solved that part, we will look to improve the current result of the
 \section{Monte Carlo approximation}
 
 
-Following Fippel et al (2003) \cite{Fippel} and González (2015) \cite{Gonzalez2015} VSMs, we develop one for this linac.
+Following \cite{Fippel} and \cite{Gonzalez2015} VSMs, we develop one for this linac.
 
 We can describe it as a two part equation, where the first leg of the equation corresponds to the main collimator and the second leg to the scattering. 
 
@@ -316,7 +321,7 @@ Now, in cases where we only have the main fluence source (\(w_0 = 1\)), our equa
 
 \subsection{Monte Carlo method}
 
-Putting it simple, a Monte Carlo simulation \cite{Kroese2014WhyTM} is a process where we introduce random numbers as coefficients, obtaining a distribution out of them. Our desired VSM is composed at the second leg of 5 coefficients, but it is an arbitrary decision to stop at 5. We could create a more complex equation if we used more coffiecients, or less, if we used a smaller number of coefficients. As a example of this, you can see how we recreate the results using 3 coefficients (equation (3.13) and Figure 4). \\
+Putting it simple, a Monte Carlo simulation (\cite{Kroese2014WhyTM}) is a process where we introduce random numbers as coefficients, obtaining a distribution out of them. Our desired VSM is composed at the second leg of 5 coefficients, but it is an arbitrary decision to stop at 5. We could create a more complex equation if we used more coffiecients, or less, if we used a smaller number of coefficients. As a example of this, you can see how we recreate the results using 3 coefficients (equation (3.13) and Figure 4). \\
 
 \begin{equation}
     \Phi_\gamma = \frac{1}{4} (\frac{(z_D^x - z_\alpha) (z^y_D - z_\alpha )}{(z-z_\alpha)^2})*(\frac{\frac{x_0^+}{\delta_0}}{\sqrt{1+\frac{x_0^+}{\delta_0}}} + \frac{\frac{x_0^-}{\delta_0}}{\sqrt{1+\frac{x_0^-}{\delta_0}}}) * (\frac{\frac{y_0^+}{\delta_0}}{\sqrt{1+\frac{y_0^+}{\delta_0}}} + \frac{\frac{y_0^-}{\delta_0}}{\sqrt{1+\frac{y_0^-}{\delta_0}}}) * ( 1+ \rho^2 \sum_{k=0}^2 h_k \rho^k)
@@ -334,7 +339,7 @@ Putting it simple, a Monte Carlo simulation \cite{Kroese2014WhyTM} is a process 
 
 VSMs on the bibliography present coefficients that are useful for both profiles ('x' and 'y'). However, during the course of this study, I realised that the behaviour of each axis was not the same, and coefficients that were good for 'x' were not so good for 'y', so it was decided to isolate each axis and study different models for each one. \\
 
-As an example of this, if we use 'x' axis coefficients we obtained after approximately a million iterations on the 'x' axis (Table 2), we obtain a mean absolute error of \(0.0142 MeV/cm^2\). If we use the same coefficients for the 'y' axis we obtain an error of \(0.0245 MeV/cm^2\).
+As an example of this, if we use 'x' axis coefficients we obtained after approximately a million iterations on the 'x' axis (Table 2), we obtain a mean absolute error of \(0.0142 MeV/cm^2\). If we use the same coefficients for the 'y' axis we obtain an error of \(0.0245 MeV/cm^2\). Complete results are showed later, on Section 6.1
 
 
 
@@ -489,11 +494,11 @@ Besides the pure Monte Carlo method is meant to be totally random, the presence 
 
 Science by definition is a way of mathematizing reality, the study and work that tries to represent reality in an organized and predictable way. However, problems on reality are not isolated like they are on laboratories and the attempts to predict in a scientific way any kind of 'open' problem is just an approximation. This is esentially the case here. Besides the trials are made on a laboratory, there are variables that we cannot take into account. In this case, we have already seen that profiles on the x axis are not exactly the same than profiles on the y axis, and there are some drops in different zones. Those are problems that come with the machine we are using, and they will replicate, but obtaining analytical approximations that define these problems is a kind of study that would take tremenduous work for not so much reward. That is a great point for the use of Artificial Intelligence on Science, it does not substitute the equations, they simply work as a way of smoothing and approximating results when the work needed to achieve a significant improvement is not worth, which is the main part of this study.\\
 
-Artificial Intelligence (AI from now on), is a broad concept that unites several fields. Monte Carlo method for example is also defined as AI, since usually, AI is defined as a computerized way of applying statistics and maths on a automatized way. AI development in the last 50 years has gone through 3 eras (\cite{8259629}, \cite{BINI20182358}):
+Artificial Intelligence (AI from now on), is a broad concept that unites several fields. Monte Carlo method for example is also defined as AI, since usually, AI is defined as a computerized way of applying statistics and maths on a automatized way. AI development in the last 50 years has gone through 3 eras (\cite{8259629, BINI20182358}):
 
 \begin{itemize}
 	\item Artificial Intelligence: Primitive AI, automatized statistics and maths, Monte Carlo method is a classic example of this field. However, following development is still included as AI.
-	\item Machine Learning: First proper development of what AI is usually understood as. Examples of this field are Tree Decision algorithms (\cite{palmer1979number}, \cite{batra1975classification}) and Gradient Boosters \cite{FREUND1997119}.
+	\item Machine Learning: First proper development of what AI is usually understood as. Examples of this field are Tree Decision algorithms (\cite{palmer1979number, batra1975classification}) and Gradient Boosters (\cite{FREUND1997119}).
 	\item Deep Learning: Neural Networks on all its variaties
 \end{itemize}
 
@@ -566,7 +571,7 @@ Here, ML algorithms (Figures 11, 12), try to obtain a correlation between those 
 
 \subsection{Deep Learning}
 
-So, latest installment of AI is Deep Learning (DL). DL adresses previously mentioned problems, they are able to understand complete arrays as data, using data in more than 2 dimensions iterating until it obtaines the best possible result. The biggest improvement on this line of work can be seen easily on matters like image detection. ML works on flattened 2-dimension arrays. So, in order to apply this to image classification, how could you work it out? You would have to convert 3-dimension arrays (height, width, number of channels hannels) to a 1-dimension array, stacking height, width and number of channels (if an image is RGB, is composed of 3 different channels), obtaning a number of variables (height*width*number\_channels) = (result). Each pixel would be a variable. If we converted that array back to an image, we would have an image of height 1 and width equal to the total number of pixels there is in the image. This may be hard to comprehend but on figures 13 and 14 \cite{Dog} the example is self-explanatory.
+So, latest installment of AI is Deep Learning (DL). DL adresses previously mentioned problems, they are able to understand complete arrays as data, using data in more than 2 dimensions iterating until it obtaines the best possible result. The biggest improvement on this line of work can be seen easily on matters like image detection. ML works on flattened 2-dimension arrays. So, in order to apply this to image classification, how could you work it out? You would have to convert 3-dimension arrays (height, width, number of channels hannels) to a 1-dimension array, stacking height, width and number of channels (if an image is RGB, is composed of 3 different channels), obtaning a number of variables (height*width*number\_channels) = (result). Each pixel would be a variable. If we converted that array back to an image, we would have an image of height 1 and width equal to the total number of pixels there is in the image. This may be hard to comprehend but on figures 13 and 14 (\cite{Dog}) the example is self-explanatory.
 
 \begin{figure}[!h]
     \centering
@@ -583,7 +588,7 @@ So, latest installment of AI is Deep Learning (DL). DL adresses previously menti
 \end{figure}
 
 
-However, DL solves that problem and allow us to feed algorithms using other kind of dimensions. Probably the two most used Neural Network types are 'LSTM' (Long Short Term Memory) Neural Networks \cite{LSTM} and CNN (Convolutional Neural Networks) \cite{DBLP:journals/corr/OSheaN15}. \\
+However, DL solves that problem and allow us to feed algorithms using other kind of dimensions. Probably the two most used Neural Network types are 'LSTM' (Long Short Term Memory) Neural Networks (\cite{LSTM}) and CNN (Convolutional Neural Networks) (\cite{DBLP:journals/corr/OSheaN15}). \\
 LSTMs are ideal for sequencial timeline-related data, they are fed with 3-dimension arrays, where each point is a time step. These kind of models are designed to learn that time steps are correlated, and, variables effect to a result on a time 't' are more related to how variables affected to a result on a time 't-1' than how variables affected to a result on 't-500'. \\
 CNNs are ideal to image, video, or audio classification, because they understand arrays as a whole. A visual example: if we convert a set of videos to arrays we obtain a 5-dimensional array (number of samples, height, width, number of channels, time). The coherence between each one of those dimensions is key, and it is something not possible to achieve using ML or classic AI.
 
@@ -658,7 +663,7 @@ Here, another small problem appear for us. Data fed to the Neural Networks must 
 
 \subsection{Settings}
 
-So, once we know that we are using Conv1D Neural Networks, we need to create that model. While ML or AI do not need much configuration, with the complexity of Neural Networks comes a way higher amount of configuration possibilites. Some of them may be known from theoretical knowledge, but many of them need to be tried before discarded. Neural Networks may be created manually, since they are basically a iterator that uses certain activation functions, but it is easier to use predefined frameworks created from the main software companies of the world. Both Meta and Google have their own branches of DL. Tensorflow (Google) \cite{45381} is the most broadly used DL framework nowadays and will be the one that we will be using on this project. \\
+So, once we know that we are using Conv1D Neural Networks, we need to create that model. While ML or AI do not need much configuration, with the complexity of Neural Networks comes a way higher amount of configuration possibilites. Some of them may be known from theoretical knowledge, but many of them need to be tried before discarded. Neural Networks may be created manually, since they are basically a iterator that uses certain activation functions, but it is easier to use predefined frameworks created from the main software companies of the world. Both Meta and Google have their own branches of DL. Tensorflow (Google) (\cite{45381}) is the most broadly used DL framework nowadays and will be the one that we will be using on this project. \\
 
 Base CNN model is composed of a number of entry convolutional layers that usually increase periodically the number of filters they are applying, which then get translated to 'Dense' (also called 'MLP', Multi Layer Perceptron) layers, which are a type of layer that work similar to ML. We will use 3 Convolutional layers linked to 3 Dense layers. The list of settings (which will be further explained later) to configure is:
 
@@ -666,13 +671,13 @@ Base CNN model is composed of a number of entry convolutional layers that usuall
 	\item Number of filters on Convolutional layers 
 	\item Kernel size on Convolutional layers
 	\item Number of neurons on layer 4 (Dense)
-	\item Number of neurons on layer 5 (Dense)
+	\item Number of neurons on layer 6 (Dense)
 	\item Activation function on layer 1 (Conv1D)
 	\item Activation function on layer 2 (Conv1D)
 	\item Activation function on layer 3 (Conv1D)
-	\item Activation function on layer 4 (Dense
+	\item Activation function on layer 4 (Dense)
 	\item Activation function on layer 5 (Dense)
-	\item Activation function on layer 6 (Dense
+	\item Activation function on layer 6 (Dense)
 	\item Dropout
 	\item Optimizer
 	\item Loss function
@@ -683,12 +688,12 @@ Iterator code is shown on appendix C and will be further explained now.
 
 \subsection{Hyperparameter tuner}
 
-In order to obtain the best possible configuration, we use a tool called keras tuner \cite{omalley2019kerastuner}. Tensorflow is the DL engine used, while keras is the framework that works as frontend for Tensorflow, both developed by Google. Keras tuner is an iterator that may go through 3 methods (Random Search, Bayesian Optimization or Hyperband) to try different combination of the selected hyperparameters (the previously mentioned settings to configure).
+In order to obtain the best possible configuration, we use a tool called keras tuner (\cite{omalley2019kerastuner}). Tensorflow is the DL engine used, while keras is the framework that works as frontend for Tensorflow, both developed by Google. Keras tuner is an iterator that may go through 3 methods (Random Search, Bayesian Optimization or Hyperband) to try different combination of the selected hyperparameters (the previously mentioned settings to configure).
 
 \begin{itemize}
     \item Random Search: a pure random search that combines selected settings in any possible way, keeping the best result
     \item Bayesian Optimization: It starts the iterations using random combinations. Once it gets results out of these combinations, it starts choosing new combinations based on the previous results, discarding the settings that did not work earlier, iterating until the chosen maximun number of trials. 
-    \item Hyperband \cite{JMLR:v18:16-558}: This model tries several predefined configurations based on previous studies, iterating over early stops. On other words, if you want a certain Neural Network to iterate for 60 epochs, this iterator model will start iterating over just 2 or 4 epochs, comparing different configurations and developing further only the ones that present good results. This method is an order of magnitude faster than Bayesian Optimization, obtaining similar results, so it was the used method for this study.
+    \item Hyperband (\cite{JMLR:v18:16-558}): This model tries several predefined configurations based on previous studies, iterating over early stops. On other words, if you want a certain Neural Network to iterate for 60 epochs, this iterator model will start iterating over just 2 or 4 epochs, comparing different configurations and developing further only the ones that present good results. This method is an order of magnitude faster than Bayesian Optimization, obtaining similar results, so it was the used method for this study.
 \end{itemize}
 
 
@@ -717,7 +722,7 @@ Convolutional layers go through the data learning in batches. When we are using 
 
 \subsubsection*{Activation function}
 
-Non linear functions that allow linear information processed from one layer proceed to the next layer \cite{sharma2017activation}. On regression problems like the ones we are facing, 'relu' and its derivates are the best options, so we kept 3 possibilites: Relu (5.1), elu (5.2) and selu (5.3). On the mid layers we use those 3 layesr, while on the output layer we may use 'relu' or 'linear' (which means there is no activation function and we obtain a linear result as result of the last layer).
+Non linear functions that allow linear information processed from one layer proceed to the next layer (\cite{sharma2017activation}). On regression problems like the ones we are facing, 'relu' and its derivates are the best options, so we kept 3 possibilites: Relu (5.1), elu (5.2) and selu (5.3). On the mid layers we use those 3 layesr, while on the output layer we may use 'relu' or 'linear' (which means there is no activation function and we obtain a linear result as result of the last layer).
 
 
 
@@ -770,7 +775,7 @@ Percentage of the neurons not used in each epoch of the model. This is made to a
 
 \subsubsection*{Optimizer}
 
-The type of algorithm used to evolve the weights ('coefficients') through every epoch and what speed that evolution is made (learning rate). You can also set an initial learning rate, but in this case we not done that, sticking with the standard learning rate for each optimizer and allowing it to evolve naturally. We try 3 types on this example, RMSprop \cite{RMSprop}, Adam (algorithm obtained as a kind of combination of RMSprop and Adagrad \cite{duchi2011adaptive}) and Adamax (which is basically an Adam modification using infinite 'p') \cite{Adam}. Optimizers look to minimize error, reaching a global minimum. A classic problem on Deep Learning is setting the learning rate in a proper way to not get stuck on a local minimum, that's why these optimizers and their evolving learning rate are so important. We can picture this on Figure 19 \cite{gradient}.
+The type of algorithm used to evolve the weights ('coefficients') through every epoch. We try 3 different types on this study, RMSprop (\cite{RMSprop}), Adam (algorithm obtained as a kind of combination of RMSprop and Adagrad) (\cite{duchi2011adaptive}) and Adamax (which is basically an Adam modification using infinite 'p') (\cite{Adam}). Optimizers look to minimize error, reaching a global minimum. A classic problem on Deep Learning is setting the learning rate in a proper way to not get stuck on a local minimum, that's why these optimizers and their evolving learning rate (all these 3 have dynamic learning rate) are so important. We can picture this on Figure 19 (\cite{gradient}).
 
 \begin{figure}[!h]
     \centering
@@ -781,6 +786,13 @@ The type of algorithm used to evolve the weights ('coefficients') through every 
 
 \begin{itemize}
     \item Adam
+    
+    \begin{figure}[!h]
+        \centering
+        \includegraphics{}
+        \caption{Caption}
+        \label{fig:my_label}
+    \end{figure}
     
     \item Adamax
     
@@ -795,11 +807,11 @@ Neural Networks iterates the previously mentioned algorithms looking to minimize
 \begin{itemize}
     \item MAE
     \begin{equation}
-        Loss = \sqrt{|Prediction-y_{test}|}
+        Loss = \sqrt{(Prediction-y_{test})^2}
     \end{equation}
     \item MSE
     \begin{equation}
-        Loss = |Prediction-y_{test}|
+        Loss = (Prediction-y_{test})^2
     \end{equation}
     \item log(cosh(f(x))
     \begin{equation}
@@ -820,7 +832,7 @@ We can see that both arms of the profile present big outliers, since the equatio
 
 \newpage 
 
-\subsection{Input data}
+\subsection{Preprocessing data}
 
 Normally, a neural network problem is composed of several 'x' variables that compose a sort of equation, like we mentioned earlier. On this case the inmediate variable we want to use as input for the neural network is the VSM that we developed through Monte Carlo. There are other variables that may help us (some of them mentioned earlier on subsection 3.1 Photon Primary Source Fluence).
 
@@ -834,7 +846,7 @@ Normally, a neural network problem is composed of several 'x' variables that com
     \item \( \rho \)
 \end{itemize}
 
-Information obtained through these variables is a bit redundant (for example Z and t are correlated to Rho). To adress that and clean data, we use Principal Component Analysis (PCA) \cite{tipping1998mixtures}. This mathematical method comprises data on a lower dimentional space. That is, if you have a 280x6 array, you can transform it into a 280x2 shaped array for example. That is one of the methods, selecting a desired shape. The other method, which we will use, is comprising a \% of the information on the data in the lowest shape possible. We use a 99\% data conservation for our case.\\
+Information obtained through these variables is a bit redundant (for example Z and t are correlated to Rho). To adress that and clean data, we use Principal Component Analysis (PCA) (\cite{tipping1998mixtures}). This mathematical method comprises data on a lower dimentional space. That is, if you have a 280x6 array, you can transform it into a 280x2 shaped array for example. That is one of the methods, selecting a desired shape. The other method, which we will use, is comprising a \% of the information on the data in the lowest shape possible. We use a 99\% data conservation for our case.\\
 \\
 Showing a visual representation of this process is not easy since representation of more than 3 dimension is not really comprehendable for human perception, but we can show a simpler example with 2 of those variables 
 
@@ -873,12 +885,12 @@ For further clarification, if we obtain the difference between t and the PCA res
 
 \newpage 
 
-After PCA is applied, data meant to be used on Neural Networks (or in general, IA algorithms) are usually normalized \cite{589532}. This operation speeds up computing of the results (lower number are easier to manipulate by the process) and usually improves results. If we apply PCA to all external variables (except our analytic function obtained through Monte Carlo) before normalizing, we end up having a 5772x2 matrix. If we apply PCA after applying normalization to said values, we obtain a 5772x5 matrix. To feed to the Neural Network we try three sets of data.
+After PCA is applied, data meant to be used on Neural Networks (or in general, IA algorithms) are usually normalized (\cite{589532}). This operation speeds up computing of the results (lower number are easier to manipulate by the process) and usually improves results. If we apply PCA to all external variables (except our analytic function obtained through Monte Carlo) before normalizing, we end up having a 5772x2 matrix. If we apply PCA after applying normalization to said values, we obtain a 5772x5 matrix. To feed to the Neural Network we try three sets of data.
 
 \begin{itemize}
-    \item PCA of extenral variables and then normalization of output and Analytic Function
-    \item Normalized analytic function
-    \item Normalization of external variables, PCA and then normalized PCA output and normalized  analytic function as data
+    \item PCA of external variables and then normalization of PCA output and Analytic Function (Will be referred later as Combination 1)
+    \item Normalized analytic function (Will be referred later as Combination 2)
+    \item Normalization of external variables, PCA and then normalized PCA output and normalized  analytic function as data (Will be referred later as Combination 3)
 \end{itemize}
 
 
@@ -888,17 +900,163 @@ After PCA is applied, data meant to be used on Neural Networks (or in general, I
 
 \section{Results}
 
+Due to the previously mentioned hardware and software limitations, results have not been equal in both axis. Also, due to the desired delivery dates, there was not enough time to get the same number of iterations for x and y profiles. However, both results on the Monte Carlo part are fine enough to get an approximation and to prove our method (using them as input for a Neural Network). This divergence on the sample, however, present an opportunity to us. This project's point is to prove the suitability of using a Convolutional Neural Network on a given analytic approximation to obtain an improved result. Having different reliability on the approximations serve us a proof of the NN working on different environments. Another problem is that y axis present some irregularities that are not present on the x axis, which lead us to higher errors. \\
+
+
 \subsection{Monte Carlo results}
 
-Due to the previously mentioned hardware and software limitations, results have not been equal to both axis. Also, due to the desired delivery dates, there was not enough time to get the same number of iterations for x and y profiles. However, both results are fine enough to get an approximation and to confirm our method (using them as input for a Neural Network).
+We can see on Table 5 and Table 6 that results improve quite slowly over each iteration. Each iteration of the Monte Carlo algorithm is composed of 100000 trials and last 8 days of uninterrumpted work on a laptop. These results were obtained through a span of approximately two months (taking into account unexpected problems like typos on the code or the laptop getting unplugged).  
 
-\subsection{}
+
+
+\begin{table}[!h]
+    \centering
+\begin{tabular}{clrrrrrr}
+& \(\delta_0\) &     \(h_0\) &         \(h_1\)  &         \(h_2\)  &         \(h_3\)  &         \(h_4\) & error \\
+\hline 
+\textbf{First iteration}  &  2.551 &  0.001000 &  0.001000 &  0.001000 &  0.001000 & -0.000100 &  0.015100 \\
+\textbf{Second iteration} &  2.533 &  0.010000 &  0.001000 & -0.000100 & -0.000001 &  0.000010 &  0.014700 \\
+\textbf{Third iteration}  &  2.533 &  0.017783 &  0.017783 & -0.017783 &  0.003162 &  0.000100 &  0.014040 \\
+\textbf{Fourth iteration} &  2.755 &  0.046416 &  0.004642 & -0.031623 &  0.010000 &  0.000316 &  0.014212 \\
+\textbf{Fifth iteration} &  2.666 &  0.043333 &  0.011365 & -0.038312 &  0.012915 &  0.000053 &  0.014019 \\
+
+    \end{tabular}
+    \caption{Results obtained through iterations on the 'x' axis}
+    \label{tab:my_label}
+\end{table}
+ 
+
+\begin{table}[!h]
+    \centering
+
+\begin{tabular}{lrrrrrrr}
+\toprule
+& \(\delta_0\) &     \(h_0\) &         \(h_1\)  &         \(h_2\)  &         \(h_3\)  &         \(h_4\) & error \\
+\midrule
+\hline
+\textbf{First iteration}  &  1.857 & -1.000000e-05 &  0.001 &  0.000010 &  0.001000 &  0.00100 &  0.027306 \\
+\textbf{Second iteration}  &  1.653 &  1.000000e-06 &  0.010 &  0.000032 &  0.000794 &  0.00010 &  0.024800 \\
+\textbf{Third iteration}   &  1.612 &  2.511886e-07 &  0.010 &  0.000068 &  0.000527 &  0.00001 &  0.023591 \\
+\bottomrule
+\end{tabular}
+    \caption{Results obtained through iterations on the 'y' axis}
+    \label{tab:my_label}
+\end{table}
+
+
+\newpage 
+
+\subsection{Algorithms results}
+
+Now we start out of the latest result (fifth iteration on the x axis, third iteration on the y axis) as input for the Neural Network. As said earlier, we tried 3 types of datasets (combinations 1, 2 and 3), depending on the use of external variables and when were they normalized. Keras hyperparameter tuner is able to automatically iterate over the mayority of settings. However, loss functions and optimizers are not included among those settings, so we create a single hyperparameter tuner for each combination of settings. Algorithm results are measured over the test data (3 random profiles selected over the complete set of data), so the analytic error in the following tables are not exactly the same to the analytic error showed earlier. Every complete iteration of the hyperparameter tuner (which obtains a total of 1270 trials) last approximately 30 minutes, so trying the set of 11430 neural networks is completed in under 5 hours. Having into account we try 3 different datasets, we try 34290 different combinations for each axis. We can see in both tables that results are best on Combination 2, which is the only dataset that consistently obtains better results than the analytic equation ones (incluided aswell in the tables for the sake of comparison). Tables are sorted by Combination 2 results for simplicity.
+
+
+\begin{table}[!h]
+    \centering
+    \begin{tabular}{c|c|c|c}
+\textbf{}  & \textbf{Combination 1} &	\textbf{Combination 2} & \textbf{Combination 3}  \\
+\hline
+MSE RMSprop &  0.079930 &	\textbf{0.011795} & 0.041807 \\
+MSE Adam & 0.021779 &	0.012387 & 0.020336 \\
+log cosh Adam & 0.024581 &	0.013169 & 0.048212 \\
+MAE Adam & 0.017286 &	0.013528 & 0.042306 \\
+MAE RMSprop & 0.080163 &	0.013833 & 0.057472 \\
+log cosh Adamax & 0.026564 &	0.014159 & 0.051768 \\
+log cosh RMSprop & 0.064878 &	0.014343 & 0.059584 \\
+MSE Adamax & 0.026564 &	0.014786 & 0.094382 \\
+Analytic & \textbf{0.014996} &	0.014996 & \textbf{0.014996}  \\
+MAE Adamax & 0.017975 &	0.016372 & 0.052906 \\
+\hline 
+    \end{tabular}
+    \caption{Results for the 'y' axis, MAE}
+    \label{tab:my_label}
+\end{table}
+
+
+
+
+
+\begin{table}[!h]
+    \centering
+    \begin{tabular}{c|c|c|c}
+\textbf{}  & \textbf{Combination 1} &	\textbf{Combination 2} & \textbf{Combination 3}  \\
+\hline
+MSE Adamax & 0.070065 &	0.017253 & 0.042311 \\
+log cosh Adamax & 0.047978 &	0.017364 & 0.037958 \\
+MAE Adam & \textbf{0.017714} &	0.019160 & 0.024568 \\
+MAE RMSprop & 0.041807 &	0.020069 & 0.064813 \\
+Analytic & 0.020128 &	0.020128 & \textbf{0.020128} \\
+MAE Adamax & 0.048893 &	0.020321 & 0.033222 \\ 
+log cosh RMSprop & 0.061308 &	0.021524 & 0.064187 \\
+MSE RMSprop & 0.064243 &	0.021808 & 0.061596 \\
+log cosh Adam &	0.047339 & 0.022317 & 0.037502 \\
+MSE Adam & 0.066479 &	0.022322 & 0.041273 \\
+\hline 
+    \end{tabular}
+    \caption{Results for the 'x' axis using only analytic function as input}
+    \label{tab:my_label}
+\end{table}
+
+\newpage 
+
+Results comparing best Combination 2 algorithm and the analytic equation can be seen on Figures 26 to 31. It is kind hard to differentiate between analytical and CNN approximation, both approximations are shown mainly to illustrate how close are the approximations to reality.
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=\textwidth]{5_5_x_axis.png}
+    \caption{5x5 profile, x axis}
+    \label{fig:my_label}
+\end{figure}
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=\textwidth]{5_5_y_axis.png}
+    \caption{5x5 profile, x axis}
+    \label{fig:my_label}
+\end{figure}
+
+\newpage 
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=\textwidth]{10_10_x_axis.png}
+    \caption{10x10 profile, x axis}
+    \label{fig:my_label}
+\end{figure}
+
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=\textwidth]{10_10_y_axis.png}
+    \caption{10x10 profile, y axis}
+    \label{fig:my_label}
+\end{figure}
+
+\newpage 
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=\textwidth]{40_40_x_axis.png}
+    \caption{40x40 profile, x axis}
+    \label{fig:my_label}
+\end{figure}
+
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=\textwidth]{40_40_y_axis.png}
+    \caption{40x40 profile, y axis}
+    \label{fig:my_label}
+\end{figure}
+
 
 \newpage
 
 \newpage
 
 \section{Conclusions}
+
+Out of these results, we can confirm our initial thesis. Using Neural Networks to obtain an approximation analytic approximation is possible and actually improves the results, with no dependance on the quality of the approximation. Trials on regular Neural Networks did not work out, however, CNNs did work great. Usually, algorithms work best using different variables so the algorithm can use the relationships between them to obtain an overall better result. The fact that in this it did not work out indicates us that the rest of variables only add noise to the algorithm. Obtaining alternative approximations out of this data, adding it to the analytic equation that we already used as variable could work out great. Other possible paths to improve the result is using 2 dimensional Neural Networks. 
 
 \newpage
 
